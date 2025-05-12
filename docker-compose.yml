@@ -4,6 +4,9 @@ services:
       context: .
       dockerfile: docker/Dockerfile
     ports:
-      - "8080:8080"
+      - "4200:4200"
     container_name: appinventarios-container
     restart: unless-stopped
+    volumes:
+      - ./AppInventarios:/app
+      - /app/node_modules

@@ -1,32 +1,23 @@
 # Usa Node 24 como base
 FROM node:24-slim
 
-# Instala Bun
-RUN curl -fsSL https://bun.sh/install | bash
-
-# Agrega Bun al PATH
-ENV PATH="/root/.bun/bin:${PATH}"
-
-# Crea directorio de trabajo
+# Directorio de trabajo
 WORKDIR /app
 
-# Copia package.json y bun.lockb
-COPY AppInventarios/package.json AppInventarios/bun.lockb ./
+# Instala Angular CLI globalmente
+RUN npm install -g @angular/cli
 
-# Instala dependencias
-RUN bun install
+# Copia dependencias
+COPY AppInventarios/package*.json ./
 
-# Copia todo el proyecto
+# Instala dependencias del proyecto
+RUN npm install
+
+# Copia todo el código fuente
 COPY AppInventarios/ .
 
-# Construir la aplicación
-RUN bun run ng build --configuration production
+# Exponer el puerto del dev server
+EXPOSE 4200
 
-# Instala un servidor para servir la app
-RUN bun add -g http-server
-
-# Exponer el puerto
-EXPOSE 8080
-
-# Comando de inicio
-CMD ["http-server", "dist/AppInventarios", "-p", "8080"]
+# Comando para levantar servidor de desarrollo
+CMD ["ng", "serve", "--host", "0.0.0.0", "--port", "4200"]
