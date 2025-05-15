@@ -1,5 +1,5 @@
 # Usa Node 24 como base
-FROM node:24-slim
+FROM node:23-slim
 
 # Directorio de trabajo
 WORKDIR /app
