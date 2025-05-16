@@ -1,1 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
+/* Fondo general */
+body {
+  margin: 0;
+  padding: 0px;
+  background-color: #deeefe; /* Azul claro */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #2f2c2c;
+}
