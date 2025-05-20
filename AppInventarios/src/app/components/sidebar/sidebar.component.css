@@ -2,31 +2,32 @@
   position: fixed;
   top: 8vh; /* <- lo mismo que la altura del header */
   left: 0;
-  width: 20vh;
-  height: calc(100vh - 8vh); /* resta el espacio del header */
-  background-color: #66b3ff;
+  width: 15%;
+  min-height: calc(100vh - 8vh); /* resta el espacio del header */
+  background-color: #043f7a;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 10px;
   z-index: 999;
 }
 
 .nav-buttons {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  align-items: center;
 }
 
 .nav-btn {
-  background-color: #002147;
-  color: white;
+  background-color: #dee6ee;
+  color: black;
   border: none;
-  border-radius: 12px;
-  padding: 12px;
+  border-radius: 10px;
   font-size: 16px;
   cursor: pointer;
   text-align: center;
+  min-height: 7vh;
+  width: 90%;
+  margin-top: 12%;
 }
 
 .settings-icon {
