@@ -1,20 +1,32 @@
 .sidebar-container {
   position: fixed;
-  top: 8vh; /* <- lo mismo que la altura del header */
   left: 0;
-  width: 15%;
-  min-height: calc(100vh - 8vh); /* resta el espacio del header */
-  background-color: #043f7a;
+  width: 10%;
+  height: 100%; /* resta el espacio del header */
+  background-color: #c0def0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   z-index: 999;
+  align-items: center;
+}
+
+.logo {
+  flex-direction: column;
+  margin-top: 10%;
+  height: 5%;
+  width: 90%;
+}
+
+.logo-img {
+  width: 90%;
 }
 
 .nav-buttons {
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 80%;
+  width: 100%;
 }
 
 .nav-btn {
@@ -25,9 +37,9 @@
   font-size: 16px;
   cursor: pointer;
   text-align: center;
-  min-height: 7vh;
-  width: 90%;
-  margin-top: 12%;
+  height: 7%;
+  width: 80%;
+  margin-bottom: 7%;
 }
 
 .settings-icon {
@@ -36,6 +48,6 @@
 }
 
 .gear {
-  font-size: 28px;
+  font-size: 5vh;
   cursor: pointer;
 }
