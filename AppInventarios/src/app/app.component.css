@@ -1,11 +1,11 @@
 .main {
   position: absolute;
   top: 5%; /* Altura del header */
-  left: 10%; /* Ancho del sidebar */
+  left: 15%; /* Ancho del sidebar */
   width: 90%; /* 100% - ancho del sidebar */
   height: 95%; /* 100% - alto del header */
   padding: 1rem;
   overflow: auto; /* para que sea desplazable si hay mucho contenido */
   box-sizing: border-box;
-  background-color: #f5f9fc; /* opcional, solo para contraste */
+  background-color: #dcdcdc; /* opcional, solo para contraste */
 }

@@ -1,53 +1,61 @@
 .sidebar-container {
   position: fixed;
   left: 0;
-  width: 10%;
-  height: 100%; /* resta el espacio del header */
-  background-color: #c0def0;
+  width: 15%;
+  height: 100%;
+  background-color: #bdbdbd;
   display: flex;
   flex-direction: column;
-  z-index: 999;
+  z-index: 998;
   align-items: center;
 }
 
-.logo {
-  flex-direction: column;
+.nav-table {
+  margin: 10vh auto 0 auto;
+  width: 80%;
+  height: 55%;
+}
+
+.nav-table td {
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+}
+
+.icon {
+  height: 1.5vw;
+  width: auto;
   margin-top: 10%;
-  height: 5%;
-  width: 90%;
-}
-
-.logo-img {
-  width: 90%;
-}
-
-.nav-buttons {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 80%;
-  width: 100%;
 }
 
 .nav-btn {
-  background-color: #dee6ee;
-  color: black;
+  background-color: transparent;
+  color: #292929;
   border: none;
   border-radius: 10px;
-  font-size: 16px;
+  font-size: 1.2vw;
   cursor: pointer;
-  text-align: center;
-  height: 7%;
-  width: 80%;
-  margin-bottom: 7%;
+  text-align: left;
+  font-weight: bold;
+  width: 100%;
+}
+
+.nav-btn:hover {
+  color: #656565;
+}
+
+.line {
+  height: 1px;
+  width: 85%;
+  background-color: #7c7c7c;
 }
 
 .settings-icon {
+  position: fixed;
+  bottom: 5vh;
+  left: 5vw;
+  width: 4%;
+  margin-top: 10vh;
   display: flex;
   justify-content: center;
-}
-
-.gear {
-  font-size: 5vh;
-  cursor: pointer;
 }
