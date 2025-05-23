@@ -1,5 +1,5 @@
 <div class="usuarios-container">
-  <p>Bienvenido</p>
+  <h1>Bienvenido</h1>
   <img src="gift/usuarios.gif" />
   <button (click)="abrirRegistro()">
     Registrar Usuario
@@ -12,9 +12,12 @@
   <div class="modal-content">
     <h2>Registrar Usuario</h2>
     <form (ngSubmit)="registrarUsuario()">
+
+      <!--
       <label for="nombre">Nombre:</label>
       <input type="text" id="nombre" [(ngModel)]="usuario.nombre" name="nombre" required />
 
+      
       <label for="apellido">Apellido:</label>
       <input type="text" id="apellido" [(ngModel)]="usuario.apellido" name="apellido" required />
 
@@ -26,6 +29,7 @@
 
       <button type="submit">Registrar</button>
       <button type="button" (click)="cerrarRegistro()">Cancelar</button>
+      -->
     </form>
   </div>
 </div>
