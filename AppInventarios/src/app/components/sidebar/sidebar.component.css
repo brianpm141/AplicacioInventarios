@@ -31,16 +31,25 @@
 .nav-btn {
   background-color: transparent;
   color: #292929;
-  border: none;
-  border-radius: 10px;
-  font-size: 1.2vw;
+  border: 1px solid transparent;
+  border-radius: 15px;
+  font-size: 1.1vw;
   cursor: pointer;
   text-align: left;
-  font-weight: bold;
   width: 100%;
+  padding: 3%;
+  padding-left: 15%;
 }
 
 .nav-btn:hover {
+  color: #656565;
+  border: 1px solid #656565;
+}
+
+.nav-btn.active {
+  background-color: #dcdcdc;
+  border: 1px solid #656565;
+  border-style: outset;
   color: #656565;
 }
 

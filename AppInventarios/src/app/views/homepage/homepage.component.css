@@ -1,0 +1,40 @@
+.home-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.home-container img {
+  width: 20%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.home-container p {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #292929;
+}
+
+button {
+  margin-top: 10%;
+  font-family: PlusJakartaSans, -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Cantarell, Helvetica Neue, Ubuntu, sans-serif;
+  font-size: 1rem;
+  align-items: center;
+  height: 8%;
+  border-radius: 0.4rem;
+  font-weight: 600;
+  padding: 0 1.2rem;
+  color: #ddd;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0.5rem 1rem rgba(143, 142, 142, 0.15) !important;
+  background: #000000;
+}
+
+button:hover {
+  background: #2b2a2a;
+}
