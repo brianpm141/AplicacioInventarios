@@ -4,8 +4,8 @@
   left: 15%; /* Ancho del sidebar */
   width: 90%; /* 100% - ancho del sidebar */
   height: 95%; /* 100% - alto del header */
-  padding: 1rem;
   overflow: auto; /* para que sea desplazable si hay mucho contenido */
   box-sizing: border-box;
   background-color: #dcdcdc; /* opcional, solo para contraste */
+  padding: 2%;
 }

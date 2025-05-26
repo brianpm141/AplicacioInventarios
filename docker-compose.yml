@@ -27,5 +27,17 @@ services:
     volumes:
       - ./DataBase/info:/var/lib/mysql
 
-volumes:
-  mysql-data:
+  api:
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+    container_name: api-container
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./api:/app
+      - /app/node_modules
+    depends_on:
+      - mysql-db
+

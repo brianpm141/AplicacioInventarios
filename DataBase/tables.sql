@@ -1,30 +1,37 @@
 CREATE TABLE passwords (
     id INT PRIMARY KEY,
-    password VARCHAR(255)
-);
+    password VARCHAR(255) NOT NULL
+);  
 
 CREATE TABLE departments (
     id INT PRIMARY KEY,
-    name VARCHAR(255),
-    description VARCHAR(255),
-    department_head VARCHAR(255),
-    status INT
+    name VARCHAR(25) UNIQUE NOT NULL,
+    description VARCHAR(180),
+    status INT DEFAULT 1
 );
 
 CREATE TABLE floors (
     id INT PRIMARY KEY,
-    name VARCHAR(255),
-    description VARCHAR(255),
-    status INT
+    name VARCHAR(25) UNIQUE NOT NULL,
+    description VARCHAR(100),
+    status INT DEFAULT 1
+);
+
+CREATE TABLE categories (
+    id INT PRIMARY KEY,
+    name VARCHAR(20),
+    description VARCHAR(100),
+    type INT,
+    status INT DEFAULT 1
 );
 
 CREATE TABLE areas (
     id INT PRIMARY KEY,
-    name VARCHAR(255),
-    description VARCHAR(255),
+    name VARCHAR(25) UNIQUE NOT NULL,
+    description VARCHAR(100),
     type INT,
+    status INT DEFAULT 1,
     id_floor INT,
-    status INT,
     FOREIGN KEY (id_floor) REFERENCES floors(id)
 );
 
@@ -38,23 +45,15 @@ CREATE TABLE area_departments (
 
 CREATE TABLE users (
     id INT PRIMARY KEY,
-    name VARCHAR(255),
-    last_name VARCHAR(255),
-    username VARCHAR(255),
-    role INT,
+    name VARCHAR(25) NOT NULL,
+    last_name VARCHAR(25),
+    username VARCHAR(15) UNIQUE NOT NULL,
+    role INT CHECK (role IN (1, 2, 3)),
     password_id INT,
     department_id INT,
-    status INT,
+    status INT DEFAULT 1,
     FOREIGN KEY (password_id) REFERENCES passwords(id),
     FOREIGN KEY (department_id) REFERENCES departments(id)
-);
-
-CREATE TABLE categories (
-    id INT PRIMARY KEY,
-    name VARCHAR(255),
-    description VARCHAR(255),
-    type INT,
-    status INT
 );
 
 CREATE TABLE device_groups (
@@ -62,16 +61,16 @@ CREATE TABLE device_groups (
     group_number INT
 );
 
-
 CREATE TABLE devices (
     id INT PRIMARY KEY,
-    brand VARCHAR(255),
-    model VARCHAR(255),
-    serial_number VARCHAR(255),
+    brand VARCHAR(30),
+    model VARCHAR(50),
+    serial_number VARCHAR(45),
+    device_name VARCHAR(30),
     category_id INT,
     group_id INT,
     area_department_id INT,
-    status INT,
+    status INT DEFAULT 1,
     FOREIGN KEY (category_id) REFERENCES categories(id), 
     FOREIGN KEY (group_id) REFERENCES device_groups(id),
     FOREIGN KEY (area_department_id) REFERENCES area_departments(id)

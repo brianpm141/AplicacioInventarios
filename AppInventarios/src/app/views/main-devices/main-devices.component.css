@@ -1,0 +1,50 @@
+.table-container {
+  width: 95%;
+  border-radius: 5px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #989898;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+th,
+td {
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #464646;
+  color: #efefef;
+}
+
+.btn-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+tr {
+  border-bottom: #efefef 1px solid;
+}
+
+button.editar {
+  background-color: orange;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+  margin-right: 5px;
+}
+
+button.eliminar {
+  background-color: red;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 5px 10px;
+}
