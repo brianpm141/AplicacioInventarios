@@ -1,0 +1,45 @@
+<div class="registro-container">
+  <h2>Registro Nuevo</h2>
+
+  <form id="registro-form" #form="ngForm" (ngSubmit)="registrarUsuario(form)">
+    <input type="text" placeholder="Nombre" name="nombre" required ngModel>
+    <input type="text" placeholder="Apellidos" name="apellidos" required ngModel>
+
+    <select name="departamento" required ngModel>
+      <option value="" disabled selected>Departamento</option>
+      <option value="sistemas">Sistemas</option>
+      <option value="compras">Compras</option>
+      <option value="almacen">Almacen</option>
+    </select>
+
+    <input type="text" placeholder="Usuario Nombre" name="usuario" required ngModel>
+    <input type="password" placeholder="Contraseña" name="contrasena" required ngModel>
+    <input type="password" placeholder="Confirmar contraseña" name="confirmar" required ngModel>
+
+    <select name="rol" required ngModel>
+      <option value="" disabled selected>Role</option>
+      <option value="admin">Administrador</option>
+      <option value="user">Usuario</option>
+    </select>
+
+    <select name="estatus" required ngModel>
+      <option value="" disabled selected>Estatus</option>
+      <option value="activo">Activo</option>
+      <option value="inactivo">Inactivo</option>
+    </select>
+
+    <div class="botones">
+      <button type="submit" class="aceptar boton-agregar">Aceptar</button>
+      <button type="button" class="regresar boton-agregar" (click)="regresar()">Regresar</button>
+    </div>
+  </form>
+
+<p *ngIf="registroExitoso" class="mensaje-exito">
+  Usuario registrado con éxito
+</p>
+
+<p *ngIf="form.submitted && form.invalid" class="mensaje-error">
+  Por favor, llene todos los campos
+</p>
+
+</div>

@@ -1,0 +1,82 @@
+body {
+  font-family: sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.registro-container {
+  padding: 40px 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.registro-container h2 {
+  font-size: 50px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.registro-container input,
+.registro-container select {
+  display: block;
+  width: 250px;
+  padding: 10px;
+  margin: 20px auto;
+  border: none;
+  border-radius: 10px;
+  background-color: #B6D6F6;
+  text-align: center;
+  font-size: 24px;
+}
+
+.registro-container button {
+  padding: 10px 20px;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.aceptar {
+  background-color: #499AFA;
+  color: white;
+}
+
+.regresar {
+  background-color: #E89612;
+  color: white;
+}
+
+.botones {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding-right: 20px;
+}
+
+.boton-agregar {
+  transition: transform 0.2s ease;
+}
+
+.boton-agregar:hover {
+  transform: scale(1.15);
+}
+
+.mensaje-exito {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 24px;
+}
+
+.mensaje-error {
+  color: red;
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 24px;
+}

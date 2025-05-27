@@ -1,54 +1,39 @@
-body {
-  background-color: #e6f2ff;
-  font-family: sans-serif;
+.construction-container {
+  height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  margin: 0;
-}
-
-.registro-container {
-  background-color: #e6f2ff;
-  padding: 20px;
-  border-radius: 10px;
   text-align: center;
 }
 
-.registro-container h2 {
-  font-size: 20px;
+.construction-container img {
+  width: 30%;
+  height: auto;
+}
+
+.construction-container p {
+  font-size: 2.5rem;
   font-weight: bold;
-  margin-bottom: 20px;
+  color: #292929;
 }
 
-.registro-container input,
-.registro-container select {
-  display: block;
-  width: 200px;
-  padding: 10px;
-  margin: 10px auto;
-  border: none;
-  border-radius: 10px;
-  background-color: #b3d9ff;
-  text-align: center;
-}
-
-.registro-container button {
-  padding: 10px 20px;
-  margin: 10px 5px;
+.boton-agregar {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  background-color: #28a745;
+  color: white;
   border: none;
   border-radius: 20px;
+  padding: 12px 20px;
   font-weight: bold;
   cursor: pointer;
+  box-shadow: 0px 2px 8px rgba(0,0,0,0.3);
+  transition: transform 0.2s ease;
+  font-size: 20px;
 }
 
-.aceptar {
-  background-color: #3399ff;
-  color: white;
+.boton-agregar:hover {
+  transform: scale(1.15);
 }
-
-.regresar {
-  background-color: #e68a00;
-  color: white;
-}
-

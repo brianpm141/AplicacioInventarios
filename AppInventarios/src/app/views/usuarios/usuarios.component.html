@@ -1,49 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Registro Nuevo</title>
-  <link rel="stylesheet" href="estilos.css">
-</head>
-<body>
+<div class="usuario-container">
+  <img src="gift/build.gif" alt="En construcción" />
+  <p>En construcción</p>
 
-  <div class="usuarios-container">
-    <h2>Registro Nuevo</h2>
-
-    <form id="registro-form">
-      <input type="text" placeholder="Nombre" required>
-      <input type="text" placeholder="Apellidos" required>
-
-      <select required>
-        <option value="" disabled selected>Departamento</option>
-        <option value="ventas">Ventas</option>
-        <option value="ti">TI</option>
-        <option value="rh">Recursos Humanos</option>
-      </select>
-
-      <input type="text" placeholder="Usuario Nombre" required>
-      <input type="password" placeholder="Contraseña" required>
-      <input type="password" placeholder="Confirmar contraseña" required>
-
-      <select required>
-        <option value="" disabled selected>Role</option>
-        <option value="admin">Administrador</option>
-        <option value="user">Usuario</option>
-      </select>
-
-      <select required>
-        <option value="" disabled selected>Estatus</option>
-        <option value="activo">Activo</option>
-        <option value="inactivo">Inactivo</option>
-      </select>
-
-      <div class="botones">
-        <button type="submit" class="aceptar">Aceptar</button>
-        <button type="button" class="regresar">Regresar</button>
-      </div>
-    </form>
-  </div>
-
-  <script src="registro.js"></script>
-</body>
-</html>
+  <button class="boton-agregar" (click)="irARegistro()">Agregar Usuario</button>
+</div>
