@@ -6,9 +6,7 @@ import { UsuariosComponent } from './views/usuarios/usuarios.component';
 
 export const routes: Routes = [
   { path: 'building', component: BuildingComponent , title : 'En construccion' },
-  { path: 'usuarios', component: UsuariosComponent, title: 'Usuarios' },
-  { path: 'usuarios', component: UsuariosComponent, title: 'Usuarios' },
-  { path: '', component: HomepageComponent , title : 'Usuarios' },
+  { path: 'usuarios', component: UsuariosComponent, title: 'Registro Usuarios' },
   { path: '', component: HomepageComponent , title : 'Inicio' },
   { path: '**', component: NotfoundComponent, title : 'Error'},
 ];

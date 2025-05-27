@@ -1,30 +1,13 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-usuarios',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './usuarios.component.html',
-  styleUrls: ['./usuarios.component.css']
+  styleUrls: ['./usuarios.component.css'] 
 })
-export class UsuariosComponent {
-  mostrarModal: boolean = false;
-  usuario = {
-    nombre: '',
-    apellido: '',
-    correo: '',
-    contrasena: ''
-  };
 
-  abrirRegistro() {
-    this.mostrarModal = true;
-  }
-
-  cerrarRegistro() {
-    this.mostrarModal = false;
-  }
-
-  registrarUsuario() {
-    console.log('Usuario registrado:', this.usuario);
-    // Aquí puedes agregar la lógica para enviar los datos al backend
-    this.cerrarRegistro();
-  }
-}
+export class UsuariosComponent {}
