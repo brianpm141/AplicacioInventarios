@@ -1,72 +1,95 @@
-.header-container {
-  align-items: center; /* Opcional: centra verticalmente */
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 6%; /* o 10vh, según prefieras */
-  background-color: #efefef;
-  display: flex;
-  z-index: 999; /* asegura que quede encima del contenido */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* sombra opcional */
+.header-container
+{
+    position: fixed;
+    z-index: 999; /* asegura que quede encima del contenido */
+    top: 0;
+    left: 0;
+
+    display: flex;
+
+    width: 100%;
+    height: 6%; /* o 10vh, según prefieras */
+
+    background-color: #efefef;
+
+    align-items: center; /* Opcional: centra verticalmente */
 }
 
-.logo {
-  margin-left: 3%;
-  display: flex;
-  height: 100%;
-  align-items: center;
+.logo
+{
+    display: flex;
+
+    height: 100%;
+    margin-left: 3%;
+
+    align-items: center;
 }
 
-.logo-img {
-  height: 90%;
+.logo-img
+{
+    height: 90%;
 }
 
-.search-section {
-  margin-left: 3%;
-  display: flex;
-  align-items: center; /* Opcional: centra verticalmente */
-  height: 85%;
-  width: 40%;
-  display: flex;
-  background-color: #bdbdbd;
-  border-radius: 15px;
+.search-section
+{
+    display: flex;
+    display: flex;
+
+    width: 40%;
+    height: 85%;
+    margin-left: 3%;
+
+    border-radius: 15px;
+    background-color: #bdbdbd;
+
+    align-items: center; /* Opcional: centra verticalmente */
 }
 
-.logo-img {
-  height: 90%;
+.logo-img
+{
+    height: 90%;
 }
 
-.icon-serch {
-  margin-left: 3%;
-  height: 50%;
+.icon-serch
+{
+    height: 50%;
+    margin-left: 3%;
 }
 
-.icon-menu {
-  height: 50%;
-  margin-left: 3%;
+.icon-menu
+{
+    height: 50%;
+    margin-left: 3%;
 }
 
-.serch-text {
-  margin-left: 5%;
-  border: none;
-  height: 80%;
-  width: 78%;
-  background-color: transparent;
-  text-align: left;
-  color: #292929;
+.serch-text
+{
+    width: 78%;
+    height: 80%;
+    margin-left: 5%;
+
+    text-align: left;
+
+    color: #292929;
+    border: none;
+    background-color: transparent;
 }
 
-.serch-text:focus {
-  outline: none;
-  box-shadow: none;
-  border: none;
+.serch-text:focus
+{
+    border: none;
+    outline: none;
+    box-shadow: none;
 }
 
-.title-section {
-  flex-grow: 1;
-  font-weight: bold;
-  margin-left: 10%;
-  font-size: 1.5vw;
-  color: #292929;
+.title-section
+{
+    font-size: 1.5vw;
+    font-weight: bold;
+
+    margin-left: 10%;
+
+    color: #292929;
+
+    flex-grow: 1;
 }
