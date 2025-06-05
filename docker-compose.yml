@@ -3,29 +3,54 @@ version: "3.8"
 services:
   appinventarios:
     build:
-      context: .
+      context: ./Angular
       dockerfile: docker/Dockerfile
-    ports:
-      - "4200:4200"
     container_name: appinventarios-container
     restart: unless-stopped
+    ports:
+      - "8080:4200"
     volumes:
-      - ./AppInventarios:/app
+      - ./Angular/AppInventarios:/app
       - /app/node_modules
+    networks:
+      - frontend
+
+  api:
+    build:
+      context: ./Api
+      dockerfile: Dockerfile
+    container_name: api-container
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./Api:/app
+      - /app/node_modules
+    depends_on:
+      - mysql-db
+    networks:
+      - frontend
+      - backend
 
   mysql-db:
     image: mysql:8.0
     container_name: mysql-container
     restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: 123456789abc   # Cambia por una contraseña segura
-      MYSQL_DATABASE: inventariosdb       # Nombre de la base de datos
-      MYSQL_USER: admin        # Usuario de la BD
-      MYSQL_PASSWORD: 123456789abc # Contraseña para el usuario
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306:3306"
     volumes:
       - ./DataBase/info:/var/lib/mysql
+    networks:
+      - backend
 
 volumes:
   mysql-data:
+
+networks:
+  frontend:
+  backend:
