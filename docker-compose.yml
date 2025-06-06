@@ -1,41 +1,7 @@
-version: "3.8"
-
 services:
-  appinventarios:
-    build:
-      context: ./Angular
-      dockerfile: docker/Dockerfile
-    container_name: appinventarios-container
-    restart: unless-stopped
-    ports:
-      - "8080:4200"
-    volumes:
-      - ./Angular/AppInventarios:/app
-      - /app/node_modules
-    networks:
-      - frontend
-
-  api:
-    build:
-      context: ./Api
-      dockerfile: Dockerfile
-    container_name: api-container
-    restart: unless-stopped
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./Api:/app
-      - /app/node_modules
-    depends_on:
-      - mysql-db
-    networks:
-      - frontend
-      - backend
-
-  mysql-db:
+  mysql:
     image: mysql:8.0
-    container_name: mysql-container
-    restart: unless-stopped
+    restart: always
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
@@ -44,13 +10,47 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./DataBase/info:/var/lib/mysql
+      - ./Database/volumes:/var/lib/mysql
     networks:
       - backend
 
+  api:
+    build:
+      context: ./Api
+      dockerfile: Dockerfile
+    restart: always
+    command: npx nodemon Express/src/index.js
+    volumes:
+      - ./Api/Express:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+    networks:
+      - backend
+      - frontend
+
+  angular:
+    build:
+      context: ./Angular
+      dockerfile: Dockerfile
+    command: npx ng serve --host 0.0.0.0 --port 4200
+    volumes:
+      - ./Angular/AppInventarios:/app
+      - /app/node_modules
+    ports:
+      - "4200:4200"
+    depends_on:
+      - api
+    networks:
+      - frontend
+
 volumes:
-  mysql-data:
+  mysql_data:
 
 networks:
-  frontend:
   backend:
+    driver: bridge
+  frontend:
+    driver: bridge

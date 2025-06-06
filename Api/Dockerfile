@@ -2,12 +2,9 @@ FROM node:24-slim
 
 WORKDIR /app
 
-COPY package*.json ./
-
+COPY ./Express/package*.json ./
 RUN npm install
 
-COPY . .
+COPY ./Express ./
 
-EXPOSE 3000
-
-CMD ["node", "index.js"]
+CMD ["npm", "start"]
