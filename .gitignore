@@ -1,3 +1,52 @@
-Database/*
+# Ignorar todo el contenido de los volúmenes de MySQL
+Database/mysql-data/
+Database/mysql-data/**
+
+# Pero mantener archivos SQL de estructura o datos
 !Database/*.sql
-frontend
+
+# Archivos temporales o binarios que genera MySQL
+*.err
+*.pid
+*.sock
+*.ibd
+*.frm
+*.MYI
+*.MYD
+*.ib_logfile*
+*.log
+*.cnf
+
+
+# Node modules
+**/node_modules/
+**/dist/
+**/build/
+
+# Angular specific
+Angular/AppInventarios/.angular/
+Angular/AppInventarios/.angular-cache/
+Angular/AppInventarios/.output/
+
+# Environment files
+.env
+
+# Logs
+**/*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDEs / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Docker
+**/Dockerfile
+**/.dockerignore
+
+# Others
+*.swp
+*.swo
