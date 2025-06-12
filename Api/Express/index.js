@@ -1,10 +1,13 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const cors = require('cors');
 const departmentsRoutes = require('./routes/departments');
 
 dotenv.config();
 
 const app = express();
+
+app.use(cors({origin: 'http://localhost:4200'}))
 app.use(express.json()); // para parsear JSON
 
 // Rutas

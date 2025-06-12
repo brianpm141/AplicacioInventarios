@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-departments',
-  standalone: true,  // Si estás usando standalone
-  imports: [CommonModule],
+  standalone: true,
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './departments.component.html',
   styleUrls: ['./departments.component.css']
 })
 export class DepartmentsComponent implements OnInit {
-
   departments: any[] = [];
 
   constructor(private http: HttpClient) {}
