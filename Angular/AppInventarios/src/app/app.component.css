@@ -1,11 +1,26 @@
 .main {
   position: absolute;
-  top: 5%; /* Altura del header */
-  left: 15%; /* Ancho del sidebar */
-  width: 90%; /* 100% - ancho del sidebar */
-  height: 95%; /* 100% - alto del header */
-  padding: 1rem;
+  top: 6%; /* Altura del header */
+  margin-left: 15%; /* Ancho del sidebar */
+  width: 85%; /* 100% - ancho del sidebar */
+  height: 94%; /* 100% - alto del header */
+  padding: 1%;
   overflow: auto; /* para que sea desplazable si hay mucho contenido */
   box-sizing: border-box;
-  background-color: #dcdcdc; /* opcional, solo para contraste */
+  background-color: transparent; /* opcional, solo para contraste */
+}
+
+.title-section {
+  flex-grow: 1;
+  font-weight: bold;
+  margin-left: 4%;
+  font-size: 2vw;
+  color: #292929;
+}
+
+.description-section {
+  flex-grow: 1;
+  margin-left: 4%;
+  font-size: 1vw;
+  color: #292929;
 }

@@ -1,0 +1,14 @@
+<div class="list-container">
+  <div class="list-content">
+    <div class="item-card" *ngFor="let dept of departments">
+      <div><strong>Nombre:</strong> {{ dept.name }}</div>
+      <div><strong>Descripción:</strong> {{ dept.description }}</div>
+      <div><strong>Estado:</strong> {{ dept.status === 1 ? 'Activo' : 'Inactivo' }}</div>
+    </div>
+  </div>
+
+  <div class="list-buttons">
+    <button class="btn-green">1</button>
+    <button class="btn-yellow">2</button>
+  </div>
+</div>

@@ -35,7 +35,7 @@ services:
     build:
       context: ./Angular
       dockerfile: Dockerfile
-    command: npx ng serve --host 0.0.0.0 --port 4200
+    command: npx ng serve --host 0.0.0.0 --poll=100
     volumes:
       - ./Angular/AppInventarios:/app
       - /app/node_modules

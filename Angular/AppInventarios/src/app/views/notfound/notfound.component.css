@@ -1,5 +1,5 @@
 .construction-container {
-  height: 100vh;
+  height: 90vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,13 +8,13 @@
 }
 
 .construction-container img {
-  width: 40%;
+  width: 25%;
   height: auto;
-  margin-bottom: 10%;
+  margin-bottom: 0;
 }
 
 .construction-container p {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #462424;
   margin-top: 0;

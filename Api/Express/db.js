@@ -28,4 +28,4 @@ function connectWithRetry() {
 // Iniciar conexión
 connectWithRetry();
 
-module.exports = () => db;
+module.exports = db;
