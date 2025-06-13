@@ -54,3 +54,13 @@
   border-radius: 5px;
   cursor: pointer;
 }
+
+.item-card:hover {
+  background: #deeefe;
+  border-color: #00234b;
+}
+
+.item-card.selected {
+  background: #deeefe;
+  border-color: #499afa;
+}

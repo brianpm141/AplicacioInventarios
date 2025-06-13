@@ -2,10 +2,6 @@
   <div class="modal-content" (click)="$event.stopPropagation()">
     
     <div class="form-container">
-      <!-- Mensajes de feedback -->
-      <div *ngIf="successMessage" class="success">{{ successMessage }}</div>
-      <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
-
       <form [formGroup]="departmentForm" (ngSubmit)="onSubmit()">
         <div class="form-row">
           
@@ -14,17 +10,11 @@
             <div class="form-group">
               <label for="nombre">Nombre</label>
               <input type="text" id="nombre" formControlName="nombre" maxlength="25" />
-              <div class="error" *ngIf="departmentForm.get('nombre')?.touched && departmentForm.get('nombre')?.invalid">
-                El nombre es obligatorio.
-              </div>
             </div>
             
             <div class="form-group">
               <label for="descripcion">Descripción</label>
               <textarea id="descripcion" formControlName="descripcion" rows="4" maxlength="120"></textarea>
-              <div class="error" *ngIf="departmentForm.get('descripcion')?.touched && departmentForm.get('descripcion')?.invalid">
-                La descripción es obligatoria.
-              </div>
             </div>
 
           </div>
@@ -34,9 +24,6 @@
             <div class="form-group">
               <label for="lider">Líder de departamento</label>
               <input type="text" id="lider" formControlName="lider" maxlength="60" />
-              <div class="error" *ngIf="departmentForm.get('lider')?.touched && departmentForm.get('lider')?.invalid">
-                El líder es obligatorio.
-              </div>
             </div>
           </div>
         </div>
@@ -44,7 +31,7 @@
         <!-- Botones en la parte inferior derecha -->
         <div class="form-buttons">
           <button type="button" class="btn-yellow" (click)="closeModal()">Cancelar</button>
-          <button type="submit" class="btn-green" [disabled]="departmentForm.invalid">Registrar</button>
+          <button type="submit" class="btn-green">Registrar</button>
         </div>
       </form>
     </div>

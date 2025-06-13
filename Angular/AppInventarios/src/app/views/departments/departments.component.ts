@@ -13,8 +13,18 @@ import { FormdepartmentComponent } from './formdepartment/formdepartment.compone
 export class DepartmentsComponent implements OnInit {
   departments: any[] = [];
   showModal = false;
+  departamentoSeleccionado: any = null;
 
   constructor(private http: HttpClient) {}
+
+  seleccionarDepartamento(dept: any): void {
+  if (this.departamentoSeleccionado === dept) {
+    this.departamentoSeleccionado = null; // deseleccionar si es el mismo
+  } else {
+    this.departamentoSeleccionado = dept;
+    console.log('Departamento seleccionado:', this.departamentoSeleccionado);
+  }
+}
 
   ngOnInit(): void {
     this.cargarDepartamentos();
@@ -43,5 +53,6 @@ export class DepartmentsComponent implements OnInit {
   onCreated(): void {
   this.cargarDepartamentos();
 }
+
 
 }

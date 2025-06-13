@@ -1,9 +1,15 @@
 <div class="list-container"> 
   <div class="list-content">
-    <div class="item-card" *ngFor="let dept of departments">
-      <div><strong>Nombre:</strong> {{ dept.name }}</div>
-      <div><strong>Descripción:</strong> {{ dept.description }}</div>
-    </div>
+    <div 
+  class="item-card" 
+  *ngFor="let dept of departments" 
+  (click)="seleccionarDepartamento(dept)"
+  [class.selected]="dept === departamentoSeleccionado"
+>
+  <div><strong>Nombre:</strong> {{ dept.name }}</div>
+  <div><strong>Descripción:</strong> {{ dept.description }}</div>
+  <div><strong>Líder:</strong> {{ dept.department_head }}</div>
+</div>
   </div>
 
   <div class="list-buttons">
@@ -11,7 +17,6 @@
   </div>
 </div>
 
-<!-- El modal SOLO SE CREA cuando showModal es true -->
 <app-formdepartment 
   *ngIf="showModal" 
   [isVisible]="showModal" 

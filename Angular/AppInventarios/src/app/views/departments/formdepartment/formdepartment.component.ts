@@ -1,31 +1,30 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, HostListener } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, HostListener, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DepartmentService } from '../../../services/department.service';
-import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-formdepartment',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './formdepartment.component.html',
-  styleUrls: ['./formdepartment.component.css']
+  styleUrls: ['./formdepartment.component.css'],
+  providers: [DepartmentService]
 })
 export class FormdepartmentComponent implements OnChanges {
   @Input() isVisible = false;
   @Output() closed = new EventEmitter<void>();
-  @Output() created = new EventEmitter<void>();
+  @Output() created = new EventEmitter<void>();  // para notificar que se creó
 
   departmentForm: FormGroup;
-  successMessage: string | null = null;
-  errorMessage: string | null = null;
-  isSubmitting = false;
+  private fb = inject(FormBuilder);
+  private departmentService = inject(DepartmentService);
 
-  constructor(private fb: FormBuilder, private departmentService: DepartmentService) {
+  constructor() {
     this.departmentForm = this.fb.group({
-      nombre: ['', [Validators.required, Validators.maxLength(25)]],
-      descripcion: ['', [Validators.required, Validators.maxLength(120)]],
-      lider: ['', [Validators.required, Validators.maxLength(60)]]
+      nombre: ['', [Validators.required, Validators.maxLength(100)]],
+      descripcion: ['', [Validators.required, Validators.maxLength(500)]],
+      lider: ['', [Validators.required, Validators.maxLength(100)]]
     });
   }
 
@@ -45,18 +44,13 @@ export class FormdepartmentComponent implements OnChanges {
   }
 
   closeModal(): void {
-    this.departmentForm.reset();
-    this.successMessage = null;
-    this.errorMessage = null;
-    this.isSubmitting = false;
     this.closed.emit();
   }
 
   onSubmit(): void {
     if (this.departmentForm.valid) {
-      this.isSubmitting = true;
-
       const formValue = this.departmentForm.value;
+
       const newDepartment = {
         name: formValue.nombre,
         description: formValue.descripcion,
@@ -65,13 +59,12 @@ export class FormdepartmentComponent implements OnChanges {
 
       this.departmentService.createDepartment(newDepartment).subscribe({
         next: () => {
-          this.successMessage = 'Registro completado exitosamente';
-          this.created.emit();
-          timer(2000).subscribe(() => this.closeModal());
+          console.log('Departamento creado exitosamente');
+          this.created.emit();  // avisamos al padre
+          this.closeModal();
         },
-        error: () => {
-          this.errorMessage = 'Ocurrió un problema al registrar';
-          this.isSubmitting = false;
+        error: (err) => {
+          console.error('Error al crear departamento', err);
         }
       });
     } else {

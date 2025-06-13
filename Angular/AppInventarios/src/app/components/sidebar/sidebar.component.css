@@ -3,7 +3,7 @@
   left: 0;
   width: 15%;
   height: 100%;
-  background-color: #bdbdbd;
+  background-color: #93cdfd;
   display: flex;
   flex-direction: column;
   z-index: 998;
@@ -30,7 +30,7 @@
 
 .nav-btn {
   background-color: transparent;
-  color: #292929;
+  color: #172954;
   border: 1px solid transparent;
   border-radius: 15px;
   font-size: 1.1vw;
@@ -42,15 +42,15 @@
 }
 
 .nav-btn:hover {
-  color: #656565;
-  border: 1px solid #656565;
+  color: #1e4aaf;
+  border: 1px solid #1e4aaf;
 }
 
 .nav-btn.active {
-  background-color: #dcdcdc;
-  border: 1px solid #656565;
+  background-color: #60b0fa;
+  border: 1px solid #172954;
   border-style: outset;
-  color: #656565;
+  color: #eff7ff;
 }
 
 .line {
