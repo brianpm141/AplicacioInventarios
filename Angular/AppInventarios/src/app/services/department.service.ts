@@ -3,11 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface Department {
-  id: number;
+  id?: number;
   name: string;
   description: string;
   department_head: string | null;
-  status: number;
+  status?: number;
 }
 
 @Injectable({
@@ -20,5 +20,9 @@ export class DepartmentService {
 
   getDepartments(): Observable<Department[]> {
     return this.http.get<Department[]>(this.apiUrl);
+  }
+
+  createDepartment(department: Department): Observable<any> {
+    return this.http.post(this.apiUrl, department);
   }
 }

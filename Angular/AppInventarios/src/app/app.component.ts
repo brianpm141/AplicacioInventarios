@@ -13,7 +13,7 @@ import { DepartmentsComponent } from './views/departments/departments.component'
   standalone: true,
   selector: 'app-root',
   imports: [RouterOutlet, HeaderComponent, SidebarComponent, BuildingComponent, NotfoundComponent
-, PlantillaFormularioComponent, PlantillaVistaComponent, DepartmentsComponent],
+, PlantillaFormularioComponent, PlantillaVistaComponent, ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })

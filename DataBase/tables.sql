@@ -4,12 +4,13 @@ CREATE TABLE passwords (
 );
 
 CREATE TABLE departments (
-    id INT PRIMARY KEY,
+    id INT PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(255),
     description VARCHAR(255),
     department_head VARCHAR(255),
     status INT
 );
+
 
 CREATE TABLE floors (
     id INT PRIMARY KEY,
