@@ -1,58 +1,106 @@
-<div class="sidebar-container">
+<div class="sidebar-wrapper">
+  <div class="sidebar-container" [class.sidebar-hidden]="!sidebarVisible">
+
+  <button class="menu-toggle" (click)="toggleSidebar()">
+    {{ sidebarVisible ? '❮' : '❯' }}
+  </button>
+
   <table class="nav-table">
     <tr>
-      <td><img src="icons/pc.png" class="icon" /></td>
-      <td><button class="nav-btn" routerLink="/building" routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">Equipos</button></td>
+      <td colspan="2">
+        <button class="nav-btn" routerLink="/building" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <img src="icons/pc.png" class="icon" />
+          Equipos
+        </button>
+      </td>
     </tr>
     <tr>
-      <td><img src="icons/usb.png" class="icon" /></td>
-      <td><button class="nav-btn"  routerLink="/building" routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">Consumibles</button></td>
+      <td colspan="2">
+        <button class="nav-btn" routerLink="/building" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <img src="icons/usb.png" class="icon" />
+          Consumibles
+        </button>
+      </td>
     </tr>
     <tr>
-      <td><img src="icons/list.png" class="icon" /></td>
-      <td><button class="nav-btn"  routerLink="/building" routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">Formatos</button></td>
+      <td colspan="2">
+        <button class="nav-btn" routerLink="/building" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <img src="icons/list.png" class="icon" />
+          Formatos
+        </button>
+      </td>
     </tr>
+
     <tr><td colspan="2"><div class="line"></div></td></tr>
+
     <tr>
-      <td><img src="icons/floor.png" class="icon" /></td>
-      <td><button class="nav-btn"  routerLink="/building" routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">Pisos</button></td>
+      <td colspan="2">
+        <button class="nav-btn" routerLink="/building" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <img src="icons/floor.png" class="icon" />
+          Pisos
+        </button>
+      </td>
     </tr>
+
     <tr>
-      <td><img src="icons/area.png" class="icon" /></td>
-      <td><button class="nav-btn"  routerLink="/building" routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">Áreas</button></td>
+      <td colspan="2">
+        <button class="nav-btn" routerLink="/building" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <img src="icons/area.png" class="icon" />
+          Áreas
+        </button>
+      </td>
     </tr>
+
     <tr>
-      <td><img src="icons/department.png" class="icon" /></td>
-      <td><button class="nav-btn"  routerLink="/departments" routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">Departamentos</button></td>
+      <td colspan="2">
+        <button class="nav-btn" routerLink="/departments" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <img src="icons/department.png" class="icon" />
+          Departamentos
+        </button>
+      </td>
     </tr>
+
     <tr><td colspan="2"><div class="line"></div></td></tr>
+
     <tr>
-      <td><img src="icons/user.png" class="icon" /></td>
-      <td><button class="nav-btn"  routerLink="/building" routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">Usuarios</button></td>
+      <td colspan="2">
+        <button class="nav-btn" routerLink="/building" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <img src="icons/user.png" class="icon" />
+          Usuarios
+        </button>
+      </td>
     </tr>
+
     <tr>
-      <td><img src="icons/hist.png" class="icon" /></td>
-      <td><button class="nav-btn"  routerLink="/building" routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">Historial de movimientos</button></td>
+      <td colspan="2">
+        <button class="nav-btn" routerLink="/building" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <img src="icons/hist.png" class="icon" />
+          Historial
+        </button>
+      </td>
     </tr>
+
     <tr>
-      <td><img src="icons/hist.png" class="icon" /></td>
-      <td><button class="nav-btn"  routerLink="/plantillaf" routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">Plantilla form</button></td>
+      <td colspan="2">
+        <button class="nav-btn" routerLink="/plantillaf" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <img src="icons/hist.png" class="icon" />
+          Plantilla form
+        </button>
+      </td>
     </tr>
+
     <tr>
-      <td><img src="icons/hist.png" class="icon" /></td>
-      <td><button class="nav-btn"  routerLink="/plantillav" routerLinkActive="active"
-          [routerLinkActiveOptions]="{ exact: true }">Plantilla vista</button></td>
+      <td colspan="2">
+        <button class="nav-btn" routerLink="/plantillav" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <img src="icons/hist.png" class="icon" />
+          Plantilla vista
+        </button>
+      </td>
     </tr>
   </table>
+
   <div class="logout-container">
     <img src="icons/settings.png" class="settings-icon" />
+  </div>
+
 </div>

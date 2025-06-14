@@ -1,20 +1,22 @@
 .header-container {
-  align-items: center; /* Opcional: centra verticalmente */
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 6%; /* o 10vh, según prefieras */
-  background-color: #deeefe;
+  height: 50px;
+  background-color: #bfdffe;
   display: flex;
-  z-index: 999; /* asegura que quede encima del contenido */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* sombra opcional */
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
 }
 
 .logo {
-  margin-left: 5%;
+  margin-top:  1.5vh;
+  margin-left: 3vw;
+  height: 80%;
   display: flex;
-  height: 70%;
   align-items: center;
 }
 
@@ -23,42 +25,66 @@
 }
 
 .search-section {
-  margin-left: 25%;
+  margin-left: 10vw;
+  margin-right: 10vw;
   display: flex;
-  align-items: center; /* Opcional: centra verticalmente */
-  height: 85%;
-  width: 50vw;
-  display: flex;
-  background-color: #bdbdbd;
-  border-radius: 15px;
+  align-items: center;
+  justify-content: space-between;
+  height: 70%;
+  width: 70vw;
+  background-color: #e3f0ff;
+  border-radius: 25px;
+  padding: 0 15px;
+  box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
 }
 
-.logo-img {
-  height: 90%;
+/* Contenedor izquierdo (lupa + input) */
+.search-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
 }
 
 .icon-serch {
-  margin-left: 3%;
-  height: 50%;
+  height: 3.5vh;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  margin-right: 10px;
 }
 
-.icon-menu {
-  height: 50%;
-  margin-left: 3%;
+.icon-serch:hover {
+  transform: scale(1.1);
 }
 
 .serch-text {
-  margin-left: 5%;
   border: none;
   height: 80%;
-  width: 78%;
+  width: 100%;
   background-color: transparent;
   text-align: left;
   color: #292929;
+  font-size: 1rem;
+}
+
+.serch-text::placeholder {
+  color: #888;
+  font-style: italic;
 }
 
 .serch-text:focus {
   outline: none;
   box-shadow: none;
   border: none;
+}
+
+/* Icono de menú al extremo derecho */
+.icon-menu {
+  height: 2.5vh;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  margin-left: 15px;
+}
+
+.icon-menu:hover {
+  transform: scale(1.1);
 }

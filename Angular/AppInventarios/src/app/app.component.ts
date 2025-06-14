@@ -1,5 +1,5 @@
-import { Component, inject} from '@angular/core';
-import { RouterOutlet, Router, ActivatedRoute ,NavigationEnd} from '@angular/router';
+import { Component, inject } from '@angular/core';
+import { RouterOutlet, Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, map } from 'rxjs';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
@@ -12,13 +12,22 @@ import { DepartmentsComponent } from './views/departments/departments.component'
 @Component({
   standalone: true,
   selector: 'app-root',
-  imports: [RouterOutlet, HeaderComponent, SidebarComponent, BuildingComponent, NotfoundComponent
-, PlantillaFormularioComponent, PlantillaVistaComponent, ],
+  imports: [
+    RouterOutlet,
+    HeaderComponent,
+    SidebarComponent,
+    BuildingComponent,
+    NotfoundComponent,
+    PlantillaFormularioComponent,
+    PlantillaVistaComponent,
+    DepartmentsComponent
+  ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   currentTitle: string = '';
+  sidebarVisible: boolean = true;
 
   private router = inject(Router);
   private route = inject(ActivatedRoute);
@@ -37,5 +46,5 @@ export class AppComponent {
       this.currentTitle = title;
     });
   }
-}
 
+}

@@ -1,20 +1,18 @@
 <app-header></app-header>
-<app-sidebar></app-sidebar>
 
-<main class="main">
+<div class="app-body">
+  <!-- Aquí simplemente mostramos u ocultamos el sidebar -->
+  <app-sidebar></app-sidebar>
 
+  <main class="main" [class.expanded]="!sidebarVisible">
     <div class="title-section">
-    <span class="view-title">{{currentTitle}}</span>
+      <span class="view-title">{{ currentTitle }}</span>
     </div>
 
     <div class="description-section">
-      <span>Dexcripcion o texto que 
-        se puede colocar aqui
-      </span>
-    <span class="view-title"></span>
+      <span>Descripción o texto que se puede colocar aquí</span>
     </div>
 
     <router-outlet></router-outlet>
-
-</main>
-
+  </main>
+</div>

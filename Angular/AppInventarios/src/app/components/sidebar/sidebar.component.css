@@ -1,17 +1,44 @@
-.sidebar-container {
+.sidebar-wrapper {
   position: fixed;
+  top: 0;
   left: 0;
-  width: 15%;
-  height: 100%;
-  background-color: #93cdfd;
   display: flex;
-  flex-direction: column;
+  height: 100%;
   z-index: 998;
-  align-items: center;
 }
 
+.sidebar-container {
+  width: 250px; /* ancho fijo o pon el que uses */
+  background-color: #dbecfe;
+  transition: transform 0.3s ease;
+}
+
+.sidebar-hidden {
+  transform: translateX(-100%);
+}
+
+.menu-toggle {
+  width: 3vw;
+  height: 5vh;
+  margin-top: 60px;
+  margin-left: 230px ;
+  border-radius: 25%;
+  border: none;
+  background-color:#60affa;
+  color: #1e49af;
+  font-size: 2vh;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  z-index: 999;
+}
+
+.menu-toggle:hover {
+  transform: translateX(-10%) scale(0.9);
+}
+
+/* Nav Table */
 .nav-table {
-  margin: 10vh auto 0 auto;
+  margin: -3vh auto 0 auto;
   width: 80%;
   height: 55%;
 }
@@ -22,35 +49,53 @@
   vertical-align: middle;
 }
 
-.icon {
-  height: 1.5vw;
-  width: auto;
-  margin-top: 10%;
-}
-
 .nav-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   background-color: transparent;
   color: #172954;
   border: 1px solid transparent;
-  border-radius: 15px;
-  font-size: 1.1vw;
+  border-radius: 12px;
+  font-size: max(14px, 1vw);
   cursor: pointer;
   text-align: left;
   width: 100%;
-  padding: 3%;
-  padding-left: 15%;
+  padding: 6px 12px;
+  transition: all 0.3s ease;
+  flex-wrap: wrap;
+  word-break: break-word;
+}
+
+.nav-btn img.icon {
+  height: 1.3vw;
+  width: auto;
+  transition: transform 0.3s ease;
+  min-height: 20px;
 }
 
 .nav-btn:hover {
   color: #1e4aaf;
   border: 1px solid #1e4aaf;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.nav-btn:hover img.icon {
+  transform: scale(1.15);
 }
 
 .nav-btn.active {
-  background-color: #60b0fa;
-  border: 1px solid #172954;
+  background-color: #eff7ff;
+  border: 1px solid #256feb;
   border-style: outset;
-  color: #eff7ff;
+  color: #1e49af;
+  transform: scale(1.06);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.nav-btn.active img.icon {
+  transform: scale(1.25);
 }
 
 .line {
@@ -60,11 +105,16 @@
 }
 
 .settings-icon {
-  position: fixed;
-  bottom: 5vh;
-  left: 5vw;
-  width: 4%;
-  margin-top: 10vh;
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 35px;
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.settings-icon:hover {
+  transform: translateX(-50%) scale(1.2);
 }

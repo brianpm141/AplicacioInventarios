@@ -1,26 +1,38 @@
-.main {
+.app-body {
+  display: flex;
   position: absolute;
-  top: 6%; /* Altura del header */
-  margin-left: 15%; /* Ancho del sidebar */
-  width: 85%; /* 100% - ancho del sidebar */
-  height: 94%; /* 100% - alto del header */
-  padding: 1%;
-  overflow: auto; /* para que sea desplazable si hay mucho contenido */
-  box-sizing: border-box;
-  background-color: transparent; /* opcional, solo para contraste */
+  top: 50px; /* altura del header */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transition: all 0.3s ease;
 }
 
+/* El main ocupa siempre todo el espacio restante */
+.main {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+/* Si el sidebar está oculto, expandimos el contenido */
+.main.expanded {
+  margin-left: 0;
+}
+
+/* Títulos */
 .title-section {
-  flex-grow: 1;
   font-weight: bold;
-  margin-left: 4%;
   font-size: 2vw;
   color: #292929;
+  margin-bottom: 10px;
 }
 
 .description-section {
-  flex-grow: 1;
-  margin-left: 4%;
   font-size: 1vw;
   color: #292929;
+  margin-bottom: 20px;
 }
