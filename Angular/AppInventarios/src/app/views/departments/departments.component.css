@@ -1,3 +1,25 @@
+.success-message-box {
+  position: fixed;
+  top: 8vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.success-message {
+  justify-content: center;
+  background-color: #2ad21e;
+  color: #062d07;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+  border: 2px solid #062d07;
+  border-radius: 15px;
+  text-align: center;
+  font-weight: bold;
+  width: 20vw;
+}
+
 .list-container {
   width: 90%;
   height: 65vh;

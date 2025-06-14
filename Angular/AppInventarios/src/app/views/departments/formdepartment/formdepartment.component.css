@@ -170,3 +170,10 @@ textarea:focus {
 .success {
   color: #28a745;
 }
+
+.error small {
+  color: #cf2e2e;
+  font-size: 0.8rem;
+  display: block;
+  margin-top: 4px;
+}

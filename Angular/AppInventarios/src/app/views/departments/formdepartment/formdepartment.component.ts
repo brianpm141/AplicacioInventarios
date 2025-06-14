@@ -14,7 +14,7 @@ import { DepartmentService } from '../../../services/departments/department.serv
 export class FormdepartmentComponent implements OnChanges {
   @Input() isVisible = false;
   @Output() closed = new EventEmitter<void>();
-  @Output() created = new EventEmitter<void>();  // para notificar que se creó
+  @Output() created = new EventEmitter<void>();
 
   departmentForm: FormGroup;
   private fb = inject(FormBuilder);
@@ -30,11 +30,7 @@ export class FormdepartmentComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['isVisible']) {
-      if (this.isVisible) {
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.body.style.overflow = '';
-      }
+      document.body.style.overflow = this.isVisible ? 'hidden' : '';
     }
   }
 
@@ -49,26 +45,24 @@ export class FormdepartmentComponent implements OnChanges {
 
   onSubmit(): void {
     if (this.departmentForm.valid) {
-      const formValue = this.departmentForm.value;
-
-      const newDepartment = {
-        name: formValue.nombre,
-        description: formValue.descripcion,
-        department_head: formValue.lider
-      };
-
-      this.departmentService.createDepartment(newDepartment).subscribe({
+      const { nombre, descripcion, lider } = this.departmentForm.value;
+      const newDept = { name: nombre, description: descripcion, department_head: lider };
+      this.departmentService.createDepartment(newDept).subscribe({
         next: () => {
           console.log('Departamento creado exitosamente');
-          this.created.emit();  // avisamos al padre
+          this.created.emit();
           this.closeModal();
         },
-        error: (err) => {
-          console.error('Error al crear departamento', err);
-        }
+        error: err => console.error('Error al crear departamento', err)
       });
     } else {
+      // Aquí forzamos que todos los campos muestren sus errores
       this.departmentForm.markAllAsTouched();
     }
   }
+
+  // Getters para usar en el template y mostrar errores
+  get nombre() { return this.departmentForm.get('nombre')!; }
+  get descripcion() { return this.departmentForm.get('descripcion')!; }
+  get lider() { return this.departmentForm.get('lider')!; }
 }

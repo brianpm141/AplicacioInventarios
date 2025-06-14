@@ -1,42 +1,53 @@
-<div class="modal-backdrop" (click)="closeModal()">
+<!-- formdepartment.component.html -->
+<div class="modal-backdrop" (click)="closeModal()"> 
   <div class="modal-content" (click)="$event.stopPropagation()">
 
     <div class="modal-header">
-  <h2>Registrar Departamento</h2>
-  <button class="close-btn" (click)="closeModal()">×</button>
-</div>
+      <h2>Registrar Departamento</h2>
+      <button class="close-btn" (click)="closeModal()">×</button>
+    </div>
 
     <div class="form-container">
       <form [formGroup]="departmentForm" (ngSubmit)="onSubmit()">
         <div class="form-row">
-          
-          <!-- Columna Izquierda -->
           <div class="form-column">
+            <!-- Nombre -->
             <div class="form-group">
               <label for="nombre">Nombre</label>
-              <input type="text" id="nombre" formControlName="nombre" maxlength="25" />
+              <input type="text" id="nombre" formControlName="nombre" maxlength="100" />
+              <div class="error" *ngIf="nombre.invalid && (nombre.touched || nombre.dirty)">
+                <small *ngIf="nombre.errors?.['required']">El nombre es obligatorio.</small>
+                <small *ngIf="nombre.errors?.['maxlength']">Máximo 100 caracteres.</small>
+              </div>
             </div>
-            
+            <!-- Descripción -->
             <div class="form-group">
               <label for="descripcion">Descripción</label>
-              <textarea id="descripcion" formControlName="descripcion" rows="4" maxlength="120"></textarea>
+              <textarea id="descripcion" formControlName="descripcion" rows="4" maxlength="500"></textarea>
+              <div class="error" *ngIf="descripcion.invalid && (descripcion.touched || descripcion.dirty)">
+                <small *ngIf="descripcion.errors?.['required']">La descripción es obligatoria.</small>
+                <small *ngIf="descripcion.errors?.['maxlength']">Máximo 500 caracteres.</small>
+              </div>
             </div>
-
           </div>
-
-          <!-- Columna Derecha -->
           <div class="form-column">
+            <!-- Líder -->
             <div class="form-group">
               <label for="lider">Líder de departamento</label>
-              <input type="text" id="lider" formControlName="lider" maxlength="60" />
+              <input type="text" id="lider" formControlName="lider" maxlength="100" />
+              <div class="error" *ngIf="lider.invalid && (lider.touched || lider.dirty)">
+                <small *ngIf="lider.errors?.['required']">El líder es obligatorio.</small>
+                <small *ngIf="lider.errors?.['maxlength']">Máximo 100 caracteres.</small>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Botones en la parte inferior derecha -->
         <div class="form-buttons">
           <button type="button" class="btn-yellow" (click)="closeModal()">Cancelar</button>
-          <button type="submit" class="btn-green">Registrar</button>
+          <button type="submit" class="btn-green">
+            Registrar
+          </button>
         </div>
       </form>
     </div>
