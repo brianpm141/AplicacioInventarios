@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges, HostListener, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DepartmentService } from '../../../services/department.service';
+import { DepartmentService } from '../../../services/departments/department.service';
 
 @Component({
   selector: 'app-formdepartment',

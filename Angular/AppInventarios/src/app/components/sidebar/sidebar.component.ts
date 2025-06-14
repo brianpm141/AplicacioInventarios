@@ -1,42 +1,27 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit, signal, computed } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { SidebarService } from '../../services/sidebar/sidebar.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-sidebar',
   standalone: true,
-  imports: [RouterModule],
+  selector: 'app-sidebar',
+  imports: [CommonModule, RouterModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css'
 })
 export class SidebarComponent implements OnInit {
-  sidebarVisible = true;
+  sidebarVisible = signal(true); 
+
+  constructor(private sidebarService: SidebarService) {}
 
   ngOnInit(): void {
-    this.checkScreenSize();
-  }
-
-  @HostListener('window:resize')
-  onResize() {
-    this.checkScreenSize();
-  }
-
-  @HostListener('window:keydown', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.key === 'Tab') {
-      event.preventDefault(); // Evitamos el tab normal (opcional)
-      this.toggleSidebar();
-    }
-  }
-
-  checkScreenSize() {
-    if (window.innerWidth <= 1080) {
-      this.sidebarVisible = false;
-    } else {
-      this.sidebarVisible = true;
-    }
+    this.sidebarService.sidebarVisible$.subscribe(value => {
+      this.sidebarVisible.set(value);
+    });
   }
 
   toggleSidebar(): void {
-    this.sidebarVisible = !this.sidebarVisible;
+    this.sidebarService.toggleSidebar();
   }
 }

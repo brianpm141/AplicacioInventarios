@@ -1,10 +1,9 @@
 <app-header></app-header>
 
 <div class="app-body">
-  <!-- Aquí simplemente mostramos u ocultamos el sidebar -->
   <app-sidebar></app-sidebar>
 
-  <main class="main" [class.expanded]="!sidebarVisible">
+  <main class="main" [ngClass]="sidebarVisible ? 'collapsed' : 'expanded'">
     <div class="title-section">
       <span class="view-title">{{ currentTitle }}</span>
     </div>

@@ -1,9 +1,9 @@
 <div class="sidebar-wrapper">
-  <div class="sidebar-container" [class.sidebar-hidden]="!sidebarVisible">
-
-  <button class="menu-toggle" (click)="toggleSidebar()">
-    {{ sidebarVisible ? '❮' : '❯' }}
-  </button>
+  <div class="sidebar-container" [class.sidebar-hidden]="!sidebarVisible()">
+  
+    <button class="menu-toggle" (click)="toggleSidebar()">
+      {{ sidebarVisible() ? '❮' : '❯' }}
+    </button>
 
   <table class="nav-table">
     <tr>

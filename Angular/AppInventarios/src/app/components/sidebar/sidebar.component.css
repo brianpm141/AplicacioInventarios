@@ -21,10 +21,10 @@
   width: 3vw;
   height: 5vh;
   margin-top: 60px;
-  margin-left: 230px ;
+  margin-left: 230px;
   border-radius: 25%;
   border: none;
-  background-color:#60affa;
+  background-color: #93ccfd;
   color: #1e49af;
   font-size: 2vh;
   cursor: pointer;
@@ -78,7 +78,7 @@
   color: #1e4aaf;
   border: 1px solid #1e4aaf;
   transform: scale(1.05);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .nav-btn:hover img.icon {
@@ -91,7 +91,7 @@
   border-style: outset;
   color: #1e49af;
   transform: scale(1.06);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .nav-btn.active img.icon {

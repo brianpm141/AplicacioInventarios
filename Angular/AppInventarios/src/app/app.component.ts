@@ -1,6 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, HostListener, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet, Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { filter, map } from 'rxjs';
+import { SidebarService } from './services/sidebar/sidebar.service';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { BuildingComponent } from './views/building/building.component';
@@ -13,6 +15,7 @@ import { DepartmentsComponent } from './views/departments/departments.component'
   standalone: true,
   selector: 'app-root',
   imports: [
+    CommonModule,
     RouterOutlet,
     HeaderComponent,
     SidebarComponent,
@@ -31,6 +34,7 @@ export class AppComponent {
 
   private router = inject(Router);
   private route = inject(ActivatedRoute);
+  private sidebarService = inject(SidebarService);
 
   constructor() {
     this.router.events.pipe(
@@ -45,6 +49,17 @@ export class AppComponent {
     ).subscribe(title => {
       this.currentTitle = title;
     });
+
+    this.sidebarService.sidebarVisible$.subscribe(value => {
+      this.sidebarVisible = value;
+    });
   }
 
+  @HostListener('window:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.key === 'Tab') {
+      event.preventDefault(); // Evita cambiar el foco
+      this.sidebarService.toggleSidebar();
+    }
+  }
 }

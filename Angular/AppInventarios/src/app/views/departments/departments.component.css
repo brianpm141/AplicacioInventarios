@@ -2,8 +2,8 @@
   width: 90%;
   max-height: 73%;
   margin: auto;
-  margin-top: 3%;
-  background: #bdbdbd;
+  margin-top: 1.5vh;
+  background: #bfdffe;
   padding: 3%;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -17,8 +17,8 @@
 }
 
 .item-card {
-  background: #efefef;
-  border: 1px solid #ccc;
+  background: #eff7ff;
+  border: 1px solid #93ccfd;
   border-radius: 8px;
   padding: 15px;
   margin-bottom: 15px;
@@ -46,21 +46,13 @@
   cursor: pointer;
 }
 
-.btn-yellow {
-  background-color: #ffc107;
-  color: #000;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
 .item-card:hover {
-  background: #deeefe;
+  background: #dbecfe;
   border-color: #00234b;
 }
 
 .item-card.selected {
-  background: #deeefe;
-  border-color: #499afa;
+  background: #dbecfe;
+  border-color: #1f2b50;
+  color: #60affa;
 }
