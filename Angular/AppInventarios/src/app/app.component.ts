@@ -57,9 +57,6 @@ export class AppComponent {
 
   @HostListener('window:keydown', ['$event'])
   handleKeyboardEvent(event: KeyboardEvent) {
-    if (event.key === 'Tab') {
-      event.preventDefault(); // Evita cambiar el foco
-      this.sidebarService.toggleSidebar();
-    }
+
   }
 }

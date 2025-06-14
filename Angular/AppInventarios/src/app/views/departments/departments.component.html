@@ -1,21 +1,32 @@
 <div class="list-container"> 
   <div class="list-content">
     <div 
-  class="item-card" 
-  *ngFor="let dept of departments" 
-  (click)="seleccionarDepartamento(dept)"
-  [class.selected]="dept === departamentoSeleccionado"
->
-  <div><strong>Nombre:</strong> {{ dept.name }}</div>
-  <div><strong>Descripción:</strong> {{ dept.description }}</div>
-  <div><strong>Líder:</strong> {{ dept.department_head }}</div>
-</div>
-  </div>
+      class="item-card" 
+      *ngFor="let dept of departments" 
+      [class.selected]="dept === departamentoSeleccionado"
+    >
+      <div class="card-row">
+        <div class="card-info">
+          <div><strong>Nombre:</strong> {{ dept.name }}</div>
+          <div><strong>Descripción:</strong> {{ dept.description }}</div>
+          <div><strong>Líder:</strong> {{ dept.department_head }}</div>
+        </div>
 
-  <div class="list-buttons">
-    <button class="btn-green" (click)="abrirModal()">Nuevo</button>
+        <div class="card-actions">
+  <button class="action-btn" title="Editar">
+    <img src="icons/editar.png" class="icon-action" />
+  </button>
+  <button class="action-btn" title="Eliminar">
+    <img src="icons/borrar.png" class="icon-action" />
+  </button>
+</div>
+
+      </div>
+    </div>
   </div>
 </div>
+
+<button class="floating-new-btn" (click)="abrirModal()">Nuevo</button>
 
 <app-formdepartment 
   *ngIf="showModal" 

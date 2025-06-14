@@ -1,6 +1,11 @@
 <div class="modal-backdrop" (click)="closeModal()">
   <div class="modal-content" (click)="$event.stopPropagation()">
-    
+
+    <div class="modal-header">
+  <h2>Registrar Departamento</h2>
+  <button class="close-btn" (click)="closeModal()">×</button>
+</div>
+
     <div class="form-container">
       <form [formGroup]="departmentForm" (ngSubmit)="onSubmit()">
         <div class="form-row">
