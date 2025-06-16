@@ -4,7 +4,7 @@ const db = require('../db');
 
 // Obtener todos los departamentos (ya lo tienes)
 router.get('/', (req, res) => {
-  db.query('SELECT * FROM departments', (err, results) => {
+  db.query('SELECT * FROM departments where status = 1', (err, results) => {
     if (err) return res.status(500).json({ error: err.message });
     res.json(results);
   });
@@ -23,5 +23,17 @@ router.post('/', (req, res) => {
     res.status(201).json({ message: 'Departamento creado correctamente', id: result.insertId });
   });
 });
+
+app.delete('/departments/:id', async (req, res) => {
+  const { id } = req.params;
+  try {
+    await connection.query('UPDATE departments SET status = 0 WHERE id = ?', [id]);
+    res.status(200).json({ message: 'Departamento eliminado (soft delete)' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error eliminando el departamento' });
+  }
+});
+
 
 module.exports = router;

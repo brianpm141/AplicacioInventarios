@@ -2,13 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormdepartmentComponent } from './formdepartment/formdepartment.component';
+import { DepartmentService } from '../../services/departments/department.service';
 
 @Component({
   selector: 'app-departments',
   standalone: true,
   imports: [CommonModule, HttpClientModule, FormdepartmentComponent],
   templateUrl: './departments.component.html',
-  styleUrls: ['./departments.component.css']
+  styleUrls: ['./departments.component.css'],
+  providers: [DepartmentService]
 })
 export class DepartmentsComponent implements OnInit {
   departments: any[] = [];
@@ -16,7 +18,7 @@ export class DepartmentsComponent implements OnInit {
   showSuccessMessage = false;
   departamentoSeleccionado: any = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private departmentService: DepartmentService) {}
 
   ngOnInit(): void {
     this.cargarDepartamentos();
@@ -43,11 +45,25 @@ export class DepartmentsComponent implements OnInit {
   onCreated(): void {
     this.cargarDepartamentos();
     this.showSuccessMessage = true;
-    // ocultar mensaje tras 3s
     setTimeout(() => this.showSuccessMessage = false, 5000);
   }
 
   seleccionarDepartamento(dept: any): void {
     this.departamentoSeleccionado = this.departamentoSeleccionado === dept ? null : dept;
+  }
+
+  eliminarDepartamento(department: any): void {
+    if (confirm('¿Seguro que deseas eliminar este departamento?')) {
+      this.departmentService.deleteDepartment(department.id).subscribe({
+        next: () => {
+          alert('Departamento eliminado exitosamente.');
+          this.cargarDepartamentos();
+        },
+        error: (err) => {
+          console.error('Error al eliminar el departamento', err);
+          alert('Error eliminando el departamento.');
+        }
+      });
+    }
   }
 }

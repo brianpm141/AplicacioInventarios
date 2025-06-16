@@ -84,7 +84,7 @@
 .action-btn {
   background-color: transparent;
   border: none;
-  font-size: 1.5rem;
+  font-size: 0.5rem;
   cursor: pointer;
   transition: transform 0.3s;
 }
