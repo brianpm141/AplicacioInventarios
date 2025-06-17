@@ -16,7 +16,7 @@ export class DepartmentsComponent implements OnInit {
   departments: any[] = [];
   showModal = false;
   departamentoSeleccionado: any = null;
-
+  showDetailModal = false;
   showMessage = false;
   messageText = '';
   messageType: 'success' | 'error' = 'success';
@@ -101,4 +101,13 @@ export class DepartmentsComponent implements OnInit {
     this.showMessage = true;
     setTimeout(() => this.showMessage = false, 3000);
   }
+
+  mostrarDetalles(dept: any) {
+  this.departamentoSeleccionado = dept;
+  this.showDetailModal = true;
+}
+
+cerrarDetalle() {
+  this.showDetailModal = false;
+}
 }

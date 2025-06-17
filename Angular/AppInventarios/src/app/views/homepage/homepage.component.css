@@ -1,40 +1,87 @@
-.home-container {
-  height: 90vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.home-container img {
-  width: 20%;
+.container {
+  background-color: #eff7ff;
   height: auto;
-  margin-bottom: 20px;
+  max-width: 1000px; /* Controla el ancho máximo para limitar las columnas */
+  width: 90%;
+  margin: 2rem auto;
+  text-align: center;
+  border-radius: 20px;
+  padding: 2rem;
+  box-sizing: border-box;
 }
 
-.home-container p {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #292929;
+h1 {
+  color: #00234b;
+  margin-bottom: 0.5rem;
+  font-size: 2.5rem;
 }
 
-button {
-  margin-top: 10%;
-  font-family: PlusJakartaSans, -apple-system, BlinkMacSystemFont, Segoe UI,
-    Roboto, Oxygen, Cantarell, Helvetica Neue, Ubuntu, sans-serif;
+p {
+  color: #00234b;
+  margin-bottom: 2rem;
   font-size: 1rem;
-  align-items: center;
-  height: 8%;
-  border-radius: 0.4rem;
-  font-weight: 600;
-  padding: 0 1.2rem;
-  color: #ddd;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 0.5rem 1rem rgba(143, 142, 142, 0.15) !important;
-  background: #000000;
 }
 
-button:hover {
-  background: #2b2a2a;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 3px solid transparent;
+  border-radius: 20px;
+  padding: 2rem 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  cursor: pointer;
+  box-sizing: border-box;
+  max-width: 240px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+.card:nth-child(1):hover {
+  border-color: #9400ff;
+}
+.card:nth-child(2):hover {
+  border-color: #7a00d1;
+}
+.card:nth-child(3):hover {
+  border-color: #b233ff;
+}
+.card:nth-child(4):hover {
+  border-color: #a300f0;
+}
+.card:nth-child(5):hover {
+  border-color: #8700e6;
+}
+.card:nth-child(6):hover {
+  border-color: #c266ff;
+}
+.card:nth-child(7):hover {
+  border-color: #8000cc;
+}
+.card:nth-child(8):hover {
+  border-color: #9900ff;
+}
+
+.card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 1rem;
+}
+
+.card span {
+  display: block;
+  color: #00234b;
+  font-weight: 600;
+  font-size: 1.1rem;
 }

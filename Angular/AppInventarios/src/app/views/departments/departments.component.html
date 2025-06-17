@@ -29,6 +29,23 @@
   </div>
 </div>
 
+<!-- Modal Detalle Departamento -->
+<div *ngIf="showDetailModal" id="detail-backdrop" (click)="cerrarDetalle()">
+  <div id="detail-modal" (click)="$event.stopPropagation()">
+    
+    <div id="detail-header">
+      Detalles del departamento
+      <button id="detail-close-btn" (click)="cerrarDetalle()">×</button>
+    </div>
+
+    <div id="detail-body">
+      <p><strong>ID:</strong> {{ departamentoSeleccionado?.id }}</p>
+      <p><strong>Nombre:</strong> {{ departamentoSeleccionado?.name }}</p>
+      <p><strong>Descripción:</strong> {{ departamentoSeleccionado?.description }}</p>
+      <p><strong>Líder:</strong> {{ departamentoSeleccionado?.department_head }}</p>
+    </div>
+  </div>
+</div>
 
 
 <div class="list-container"> 
@@ -37,7 +54,7 @@
       class="item-card" 
       *ngFor="let dept of departments" 
       [class.selected]="dept === departamentoSeleccionado"
-    >
+    (click)="mostrarDetalles(dept)" >
       <div class="card-row">
         <div class="card-info">
           <div><strong>Nombre:</strong> {{ dept.name }}</div>
@@ -67,6 +84,9 @@
   (closed)="cerrarModal()" 
   (created)="onCreated()">
 </app-formdepartment>
+
+
+
 
 
 

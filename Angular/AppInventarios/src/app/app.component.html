@@ -4,13 +4,6 @@
   <app-sidebar></app-sidebar>
 
   <main class="main" [ngClass]="sidebarVisible ? 'collapsed' : 'expanded'">
-    <div class="title-section">
-      <span class="view-title">{{ currentTitle }}</span>
-    </div>
-
-    <div class="description-section">
-      <span>Descripción o texto que se puede colocar aquí</span>
-    </div>
 
     <router-outlet></router-outlet>
   </main>
