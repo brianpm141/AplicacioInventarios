@@ -1,39 +1,73 @@
 const express = require('express');
 const router = express.Router();
-const db = require('../db');
+const pool = require('../db');
 
-// Obtener todos los departamentos (ya lo tienes)
+// GET departamentos activos
 router.get('/', (req, res) => {
-  db.query('SELECT * FROM departments where status = 1', (err, results) => {
-    if (err) return res.status(500).json({ error: err.message });
+  pool.query('SELECT * FROM departments WHERE status = 1', (err, results) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ message: 'Error al obtener departamentos' });
+    }
     res.json(results);
   });
 });
 
-// Agregar nuevo departamento (NUEVO)
+// POST crear departamento
 router.post('/', (req, res) => {
   const { name, description, department_head } = req.body;
+  pool.query(
+    'INSERT INTO departments (name, description, department_head, status) VALUES (?, ?, ?, 1)',
+    [name, description, department_head],
+    (err, result) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Error al crear departamento' });
+      }
+      res.status(201).json({ message: 'Departamento creado exitosamente' });
+    }
+  );
+});
 
-  // Puedes agregar validación aquí si deseas
+// PUT actualizar departamento (opcional si lo necesitas después)
+router.put('/:id', (req, res) => {
+  const { id } = req.params;
+  const { name, description, department_head } = req.body;
+  pool.query(
+    'UPDATE departments SET name = ?, description = ?, department_head = ? WHERE id = ?',
+    [name, description, department_head, id],
+    (err, result) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Error al actualizar el departamento' });
+      }
+      res.json({ message: 'Departamento actualizado correctamente' });
+    }
+  );
+});
 
-  const sql = 'INSERT INTO departments (name, description, department_head, status) VALUES (?, ?, ?, 1)';
-  db.query(sql, [name, description, department_head], (err, result) => {
-    if (err) return res.status(500).json({ error: err.message });
-    
-    res.status(201).json({ message: 'Departamento creado correctamente', id: result.insertId });
+// PUT soft delete departamento
+router.put('/:id/delete', (req, res) => {
+  const { id } = req.params;
+  pool.query('UPDATE departments SET status = 0 WHERE id = ?', [id], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ message: 'Error al eliminar el departamento' });
+    }
+    res.json({ message: 'Departamento eliminado' });
   });
 });
 
-app.delete('/departments/:id', async (req, res) => {
+// DELETE eliminación física (opcional si realmente lo necesitas)
+router.delete('/:id', (req, res) => {
   const { id } = req.params;
-  try {
-    await connection.query('UPDATE departments SET status = 0 WHERE id = ?', [id]);
-    res.status(200).json({ message: 'Departamento eliminado (soft delete)' });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: 'Error eliminando el departamento' });
-  }
+  pool.query('DELETE FROM departments WHERE id = ?', [id], (err, result) => {
+    if (err) {
+      console.error(err);
+      return res.status(500).json({ message: 'Error al eliminar el departamento de forma permanente' });
+    }
+    res.json({ message: 'Departamento eliminado permanentemente' });
+  });
 });
-
 
 module.exports = router;
