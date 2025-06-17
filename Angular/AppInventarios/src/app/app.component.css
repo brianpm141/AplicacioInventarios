@@ -2,15 +2,15 @@
   position: relative;
   display: flex;
   flex-direction: row;
-  top: 50px; /* altura del header */
+  top: 30px; /* altura del header */
   width: 100%;
-  height: calc(100vh - 50px); /* para no tapar el header */
+  height: calc(100vh - 30px); /* para no tapar el header */
   transition: all 0.3s ease;
 }
 
 .main {
   flex: 1;
-  padding: 20px;
+  padding: 5px;
   overflow-y: auto;
   background-color: #dbecfe;
   box-sizing: border-box;
@@ -24,19 +24,4 @@
 
 .main.collapsed {
   margin-left: 250px; /* el ancho exacto de tu sidebar */
-}
-
-.title-section {
-  margin-left: 2vw;
-  font-weight: bold;
-  font-size: 200%;
-  color: #172954;
-  margin-bottom: 1vh;
-}
-
-.description-section {
-  margin-left: 2vw;
-  font-size: 100%;
-  color: #172954;
-  margin-bottom: 1vh;
 }

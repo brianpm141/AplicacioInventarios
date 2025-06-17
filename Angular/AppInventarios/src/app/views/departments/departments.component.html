@@ -48,6 +48,12 @@
 </div>
 
 
+<div class="view-header">
+  <h1>Gestión de Departamentos</h1>
+  <p>Visualiza, registra y administra los departamentos existentes en el sistema.</p>
+</div>
+
+
 <div class="list-container"> 
   <div class="list-content">
     <div 
@@ -62,12 +68,14 @@
         </div>
 
         <div class="card-actions">
-  <button class="action-btn" title="Editar" (click)="abrirEditar(dept)">
+  <button class="action-btn" title="Editar" (click)="abrirEditar(dept); $event.stopPropagation()">
   <img src="icons/editar.png" class="icon-action" />
 </button>
-  <button (click)="eliminarDepartamento(dept)" class="action-btn" title="Eliminar">
-    <img src="icons/borrar.png" class="icon-action" />
-  </button>
+
+<button (click)="eliminarDepartamento(dept); $event.stopPropagation()" class="action-btn" title="Eliminar">
+  <img src="icons/borrar.png" class="icon-action" />
+</button>
+
 </div>
 
       </div>

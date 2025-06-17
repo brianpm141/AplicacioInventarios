@@ -1,3 +1,22 @@
+.view-header {
+  width: 90%;
+  margin-top: 0vh;
+  margin-bottom: 2vh;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #00234b;
+  text-align: center;
+}
+
+.view-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.view-header p {
+  font-size: 1.1rem;
+  color: #444;
+}
+
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -72,7 +91,6 @@
   padding: 3%;
   background: #f0f7ff;
   border-radius: 0 0 20px 20px;
-  font-family: "Segoe UI", Arial, sans-serif;
   overflow-y: auto;
   box-sizing: border-box;
   width: 100%;

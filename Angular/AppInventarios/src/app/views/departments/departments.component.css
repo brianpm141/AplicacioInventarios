@@ -1,3 +1,21 @@
+.view-header {
+  width: 90%;
+  margin: auto;
+  margin: 0;
+  margin-left: 3vw;
+  color: #00234b;
+}
+
+.view-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.view-header p {
+  font-size: 1.1rem;
+  color: #444;
+}
+
 .list-container {
   width: 90%;
   height: 65vh;
@@ -7,7 +25,6 @@
   padding: 3%;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  font-family: Arial, sans-serif;
   overflow-y: auto;
 }
 
@@ -252,7 +269,6 @@
   padding: 3%;
   background: #fff5f5;
   border-radius: 0 0 20px 20px;
-  font-family: "Segoe UI", Arial, sans-serif;
   box-sizing: border-box;
   text-align: center;
   font-size: 1.2rem;
@@ -331,7 +347,6 @@
   transform: scale(0.9);
   animation: scaleInDetail 0.35s ease-out forwards;
   box-shadow: 0 12px 36px rgba(0, 0, 0, 0.3);
-  font-family: "Segoe UI", Arial, sans-serif;
 }
 
 @keyframes scaleInDetail {

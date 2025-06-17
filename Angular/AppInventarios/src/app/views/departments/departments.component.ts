@@ -53,6 +53,7 @@ export class DepartmentsComponent implements OnInit {
 
   cerrarModal(): void {
     this.showModal = false;
+    this.departamentoSeleccionado = null;
   }
 
   onCreated(): void {
@@ -93,6 +94,7 @@ export class DepartmentsComponent implements OnInit {
 
   cancelarEliminacion(): void {
     this.showConfirmModal = false;
+    this.departamentoSeleccionado = null;
   }
 
   mostrarMensaje(texto: string, tipo: 'success' | 'error') {
@@ -109,5 +111,6 @@ export class DepartmentsComponent implements OnInit {
 
 cerrarDetalle() {
   this.showDetailModal = false;
+  this.departamentoSeleccionado = null;
 }
 }

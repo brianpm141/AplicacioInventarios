@@ -1,8 +1,7 @@
 .container {
   background-color: #eff7ff;
   height: auto;
-  max-width: 1000px; /* Controla el ancho máximo para limitar las columnas */
-  width: 90%;
+  max-width: 70vw; /* Controla el ancho máximo para limitar las columnas */
   margin: 2rem auto;
   text-align: center;
   border-radius: 20px;

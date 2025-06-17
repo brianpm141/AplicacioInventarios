@@ -1,8 +1,14 @@
-/* Fondo general */
+:root {
+  --main-font: "Source Sans 3", "Segoe UI", "Roboto", "Helvetica Neue", Arial,
+    sans-serif;
+  --main-color: #172954;
+  --background-color: #1e418a;
+}
+
 body {
   margin: 0;
-  padding: 0px;
-  background-color: #1e418a;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  color: #172954;
+  padding: 0;
+  background-color: var(--background-color);
+  font-family: var(--main-font);
+  color: var(--main-color);
 }
