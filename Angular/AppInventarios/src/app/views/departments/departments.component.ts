@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { FormdepartmentComponent } from './formdepartment/formdepartment.component';
 import { DepartmentService } from '../../services/departments/department.service';
@@ -15,26 +15,39 @@ import { DepartmentService } from '../../services/departments/department.service
 export class DepartmentsComponent implements OnInit {
   departments: any[] = [];
   showModal = false;
-  showSuccessMessage = false;
   departamentoSeleccionado: any = null;
 
-  constructor(private http: HttpClient, private departmentService: DepartmentService) {}
+  showMessage = false;
+  messageText = '';
+  messageType: 'success' | 'error' = 'success';
+
+  showConfirmModal = false;
+  departamentoAEliminar: any = null;
+
+  constructor(private departmentService: DepartmentService) {}
 
   ngOnInit(): void {
     this.cargarDepartamentos();
   }
 
   cargarDepartamentos(): void {
-    this.http.get<any[]>('http://localhost:3000/api/departments').subscribe({
+    this.departmentService.getDepartments().subscribe({
       next: data => this.departments = data ?? [],
       error: err => {
         console.error('Error al obtener los departamentos', err);
         this.departments = [];
+        this.mostrarMensaje('Error al obtener los departamentos', 'error');
       }
     });
   }
 
-  abrirModal(): void {
+  abrirEditar(dept: any) {
+    this.departamentoSeleccionado = dept;
+    this.showModal = true;
+  }
+
+  abrirModal() {
+    this.departamentoSeleccionado = null;
     this.showModal = true;
   }
 
@@ -44,8 +57,12 @@ export class DepartmentsComponent implements OnInit {
 
   onCreated(): void {
     this.cargarDepartamentos();
-    this.showSuccessMessage = true;
-    setTimeout(() => this.showSuccessMessage = false, 5000);
+
+    if (this.departamentoSeleccionado) {
+      this.mostrarMensaje('Departamento actualizado exitosamente', 'success');
+    } else {
+      this.mostrarMensaje('Departamento registrado exitosamente', 'success');
+    }
   }
 
   seleccionarDepartamento(dept: any): void {
@@ -53,17 +70,35 @@ export class DepartmentsComponent implements OnInit {
   }
 
   eliminarDepartamento(department: any): void {
-    if (confirm('¿Seguro que deseas eliminar este departamento?')) {
-      this.departmentService.deleteDepartment(department.id).subscribe({
-        next: () => {
-          alert('Departamento eliminado exitosamente.');
-          this.cargarDepartamentos();
-        },
-        error: (err) => {
-          console.error('Error al eliminar el departamento', err);
-          alert('Error eliminando el departamento.');
-        }
-      });
-    }
+    this.departamentoAEliminar = department;
+    this.showConfirmModal = true;
+  }
+
+  confirmarEliminacion(): void {
+    if (!this.departamentoAEliminar) return;
+
+    this.departmentService.deleteDepartment(this.departamentoAEliminar.id).subscribe({
+      next: () => {
+        this.cargarDepartamentos();
+        this.mostrarMensaje('Departamento eliminado exitosamente', 'success');
+      },
+      error: (err) => {
+        console.error('Error al eliminar el departamento', err);
+        this.mostrarMensaje('Error eliminando el departamento.', 'error');
+      }
+    });
+
+    this.showConfirmModal = false;
+  }
+
+  cancelarEliminacion(): void {
+    this.showConfirmModal = false;
+  }
+
+  mostrarMensaje(texto: string, tipo: 'success' | 'error') {
+    this.messageText = texto;
+    this.messageType = tipo;
+    this.showMessage = true;
+    setTimeout(() => this.showMessage = false, 3000);
   }
 }

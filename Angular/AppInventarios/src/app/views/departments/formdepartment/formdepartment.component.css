@@ -1,21 +1,3 @@
-.modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2rem;
-  background: #93ccfd;
-  color: #172954;
-  border-radius: 12px 12px 0 0;
-}
-
-.close-btn {
-  background: transparent;
-  border: none;
-  font-size: 2rem;
-  color: #172954;
-  cursor: pointer;
-}
-
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -37,13 +19,13 @@
   }
 }
 
-/* Contenido del modal: card limpia y centrada */
 .modal-content {
-  background: #fff;
-  border-radius: 12px;
+  background: #f0f7ff;
+  border-radius: 20px;
   padding: 0;
   margin: 0 1rem;
-  width: 60vw;
+  width: 50vw;
+  max-width: 70vw;
   transform: scale(0.8);
   animation: scaleIn 0.35s ease-out forwards;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
@@ -60,83 +42,119 @@
   }
 }
 
-/* Formulario interno con mejor espaciado y responsivo */
-.form-container {
-  padding: 3rem;
-  background: #f0f7ff;
-  border-radius: 0 0 12px 12px;
-  font-family: Arial, sans-serif;
-  overflow-y: auto;
-}
-
-/* Más espacio vertical entre cada grupo de campo */
-.form-group {
-  margin-bottom: 0.5rem; /* antes era 5%, ahora 1.5rem */
-}
-
-/* Más espacio horizontal entre columnas */
-.form-row {
+.modal-header {
   display: flex;
-  gap: 5rem; /* antes solo justify, ahora gap */
-  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: #aacbee;
+  color: #172954;
+  border-radius: 20px 20px 0 0;
+  max-height: 5vh;
+  font-weight: bold;
+  font-size: 1.2rem;
+  position: relative;
 }
 
-.form-column {
+.close-btn {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #172954;
+  cursor: pointer;
+}
+
+.form-container {
+  padding: 3%;
+  background: #f0f7ff;
+  border-radius: 0 0 20px 20px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  overflow-y: auto;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+form {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-row {
+  width: 100%;
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+  box-sizing: border-box;
+}
+
+.form-group {
   flex: 1 1 45%;
   min-width: 200px;
+  box-sizing: border-box;
 }
 
-/* Labels e inputs más legibles */
 label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
   font-size: 1rem;
+  color: #172954;
 }
 
 input[type="text"],
-input[type="number"],
-select,
 textarea {
   width: 100%;
-  padding: 0.75rem;
-  margin-top: 0.25rem;
+  padding: 0.9rem 1rem;
   border: 1px solid #aacbee;
-  border-radius: 6px;
+  border-radius: 12px;
   background-color: #fff;
   font-size: 1rem;
   transition: border-color 0.3s, box-shadow 0.3s;
+  box-sizing: border-box;
 }
 
 input:focus,
 textarea:focus {
   border-color: #007bff;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
   outline: none;
 }
 
-/* Botones con estilo consistente y hover */
+textarea {
+  resize: none;
+  height: 120px;
+  box-sizing: border-box;
+}
+
 .form-buttons {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   display: flex;
-  justify-content: flex-end;
-  gap: 1rem;
+  justify-content: center;
+  gap: 1.5rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .btn-green,
 .btn-yellow {
-  padding: 0.75rem 1.5rem;
-  border-radius: 6px;
+  padding: 0.9rem 2rem;
+  border-radius: 12px;
   font-size: 1rem;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, transform 0.2s;
+  font-weight: 600;
+  border: none;
 }
 
 .btn-green {
   background-color: #28a745;
   color: #fff;
-  border: none;
 }
 
 .btn-green:hover {
@@ -147,7 +165,6 @@ textarea:focus {
 .btn-yellow {
   background-color: #ffc107;
   color: #212529;
-  border: none;
 }
 
 .btn-yellow:hover {
@@ -155,25 +172,20 @@ textarea:focus {
   transform: translateY(-2px);
 }
 
-/* Mensajes de error/éxito más claros */
-.error,
-.success {
-  margin-top: 1rem;
-  font-weight: bold;
+.error {
+  margin-top: 0.5rem;
+  font-weight: normal;
+  color: #cf2e2e;
+  width: 100%;
+  box-sizing: border-box;
   text-align: center;
 }
 
-.error {
-  color: #dc3545;
-}
-
-.success {
-  color: #28a745;
-}
-
 .error small {
-  color: #cf2e2e;
-  font-size: 0.8rem;
-  display: block;
-  margin-top: 4px;
+  display: inline-block;
+  padding: 0.4rem 0.6rem;
+  border-radius: 10px;
+  background-color: #fde;
+  border: 1px solid #cf2e2e;
+  box-sizing: border-box;
 }

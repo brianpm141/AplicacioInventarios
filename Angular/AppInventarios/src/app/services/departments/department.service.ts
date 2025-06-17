@@ -29,4 +29,9 @@ export class DepartmentService {
   deleteDepartment(id: number): Observable<any> {
     return this.http.put(`${this.apiUrl}/${id}/delete`, {});
   }
+
+  updateDepartment(id: number, data: any) {
+  return this.http.put(`${this.apiUrl}/${id}`, data);
+}
+
 }

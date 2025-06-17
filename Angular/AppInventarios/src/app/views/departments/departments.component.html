@@ -1,6 +1,35 @@
-<div *ngIf="showSuccessMessage" class="success-message-box">
-  <p class="success-message">Registro exitoso</p> 
+<div *ngIf="showMessage" [ngClass]="{'message-box': true, 'success': messageType === 'success', 'error': messageType === 'error'}"> 
+  <div class="icon-container">
+    <span *ngIf="messageType === 'success'" class="icon">
+      <img src="img/suc.png" class="icon-mess" />
+    </span>
+    <span *ngIf="messageType === 'error'" class="icon">
+      <img src="img/error.png" class="icon-mess" />
+    </span>
+  </div>
+  <p>{{ messageText }}</p>
 </div>
+
+<!-- Modal de confirmación de borrado -->
+<div *ngIf="showConfirmModal" id="confirm-backdrop">
+  <div id="confirm-modal" (click)="$event.stopPropagation()">
+    <div id="confirm-header">
+      <h2>Confirmar Eliminación</h2>
+      <button id="confirm-close-btn" (click)="cancelarEliminacion()">×</button>
+    </div>
+
+    <div id="confirm-body">
+      <p>¿Está seguro que desea eliminar el departamento <strong>{{ departamentoAEliminar?.name }}</strong>?</p>
+
+      <div id="confirm-buttons">
+        <button class="btn-yellow" (click)="cancelarEliminacion()">Cancelar</button>
+        <button class="btn-green" (click)="confirmarEliminacion()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 <div class="list-container"> 
   <div class="list-content">
@@ -13,13 +42,12 @@
         <div class="card-info">
           <div><strong>Nombre:</strong> {{ dept.name }}</div>
           <div><strong>Descripción:</strong> {{ dept.description }}</div>
-          <div><strong>Líder:</strong> {{ dept.department_head }}</div>
         </div>
 
         <div class="card-actions">
-  <button class="action-btn" title="Editar">
-    <img src="icons/editar.png" class="icon-action" />
-  </button>
+  <button class="action-btn" title="Editar" (click)="abrirEditar(dept)">
+  <img src="icons/editar.png" class="icon-action" />
+</button>
   <button (click)="eliminarDepartamento(dept)" class="action-btn" title="Eliminar">
     <img src="icons/borrar.png" class="icon-action" />
   </button>
@@ -35,6 +63,10 @@
 <app-formdepartment 
   *ngIf="showModal" 
   [isVisible]="showModal" 
+  [departmentToEdit]="departamentoSeleccionado" 
   (closed)="cerrarModal()" 
   (created)="onCreated()">
 </app-formdepartment>
+
+
+
