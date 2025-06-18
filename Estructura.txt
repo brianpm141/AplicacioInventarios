@@ -1,0 +1,28 @@
+APLICACIONINVENTARIOS/
+├── docker-compose.yml
+├── Angular/
+│   ├── Dockerfile
+│   └── AppInventarios/             # Proyecto Angular
+│       ├── public/
+│       └── src/
+│           ├── app/
+│           │   ├── components/
+│           │   ├── services/		#servicios del proyecto
+│           │   ├── views/			#Componentes del proyecto
+│           │   ├── app.component.css
+│           │   ├── app.component.html
+│           │   ├── app.component.spec.ts
+│           │   ├── app.component.ts
+│           │   ├── app.config.ts
+│           │   └── app.routes.ts
+├── Api/
+    ├── Dockerfile
+    └── Express/                    # Proyecto Express
+        ├── node_modules/
+        ├── routes/
+        │   ├── departments.js            
+        ├── db.js
+        ├── index.js
+        ├── package.json
+        ├── package-lock.json
+
