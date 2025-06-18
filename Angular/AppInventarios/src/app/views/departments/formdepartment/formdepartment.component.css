@@ -1,22 +1,3 @@
-.view-header {
-  width: 90%;
-  margin-top: 0vh;
-  margin-bottom: 2vh;
-  font-family: "Segoe UI", Arial, sans-serif;
-  color: #00234b;
-  text-align: center;
-}
-
-.view-header h1 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.view-header p {
-  font-size: 1.1rem;
-  color: #444;
-}
-
 .modal-backdrop {
   position: fixed;
   inset: 0;
@@ -41,8 +22,6 @@
 .modal-content {
   background: #f0f7ff;
   border-radius: 20px;
-  padding: 0;
-  margin: 0 1rem;
   width: 50vw;
   max-width: 70vw;
   transform: scale(0.8);
@@ -69,7 +48,6 @@
   background: #aacbee;
   color: #172954;
   border-radius: 20px 20px 0 0;
-  max-height: 5vh;
   font-weight: bold;
   font-size: 1.2rem;
   position: relative;
@@ -83,7 +61,6 @@
   background: transparent;
   border: none;
   font-size: 2rem;
-  color: #172954;
   cursor: pointer;
 }
 
@@ -91,49 +68,57 @@
   padding: 3%;
   background: #f0f7ff;
   border-radius: 0 0 20px 20px;
-  overflow-y: auto;
-  box-sizing: border-box;
-  width: 100%;
 }
 
 form {
   width: 100%;
-  box-sizing: border-box;
 }
 
 .form-row {
-  width: 100%;
   display: flex;
   gap: 3rem;
   flex-wrap: wrap;
-  margin-bottom: 0;
-  box-sizing: border-box;
+  margin-bottom: 1.5rem;
+}
+
+.form-row.single-row {
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+}
+
+.form-row.single-row .form-group {
+  flex: 1;
+  min-width: 0;
+}
+
+.form-row.single-row .form-group.abbreviation {
+  flex: 0 0 100px;
 }
 
 .form-group {
   flex: 1 1 45%;
   min-width: 200px;
-  box-sizing: border-box;
+}
+
+.form-group.abbreviation {
+  flex: 1 1 30%;
+  min-width: 150px;
 }
 
 label {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  font-size: 1rem;
-  color: #172954;
 }
 
-input[type="text"],
+input,
 textarea {
   width: 100%;
   padding: 0.9rem 1rem;
   border: 1px solid #aacbee;
   border-radius: 12px;
-  background-color: #fff;
-  font-size: 1rem;
-  transition: border-color 0.3s, box-shadow 0.3s;
   box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 input:focus,
@@ -144,66 +129,57 @@ textarea:focus {
 }
 
 textarea {
-  resize: none;
   height: 120px;
-  box-sizing: border-box;
+  resize: none;
 }
 
 .form-buttons {
-  margin-top: 2rem;
   display: flex;
   justify-content: center;
   gap: 1.5rem;
-  width: 100%;
-  box-sizing: border-box;
+  margin-top: 2rem;
 }
 
 .btn-green,
 .btn-yellow {
   padding: 0.9rem 2rem;
+  border: none;
   border-radius: 12px;
-  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s, transform 0.2s;
-  font-weight: 600;
-  border: none;
 }
 
 .btn-green {
-  background-color: #28a745;
+  background: #28a745;
   color: #fff;
 }
 
 .btn-green:hover {
-  background-color: #218838;
+  background: #218838;
   transform: translateY(-2px);
 }
 
 .btn-yellow {
-  background-color: #ffc107;
+  background: #ffc107;
   color: #212529;
 }
 
 .btn-yellow:hover {
-  background-color: #e0a800;
+  background: #e0a800;
   transform: translateY(-2px);
 }
 
 .error {
-  margin-top: 0.5rem;
-  font-weight: normal;
   color: #cf2e2e;
-  width: 100%;
-  box-sizing: border-box;
   text-align: center;
+  margin-top: 0.5rem;
 }
 
 .error small {
-  display: inline-block;
+  background: #fde;
+  border: 1px solid #cf2e2e;
   padding: 0.4rem 0.6rem;
   border-radius: 10px;
-  background-color: #fde;
-  border: 1px solid #cf2e2e;
-  box-sizing: border-box;
 }

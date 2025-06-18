@@ -39,7 +39,7 @@
     </div>
 
     <div id="detail-body">
-      <p><strong>ID:</strong> {{ departamentoSeleccionado?.id }}</p>
+      <p><strong>Abreviacion:</strong> {{ departamentoSeleccionado?.abbreviation }}</p>
       <p><strong>Nombre:</strong> {{ departamentoSeleccionado?.name }}</p>
       <p><strong>Descripción:</strong> {{ departamentoSeleccionado?.description }}</p>
       <p><strong>Líder:</strong> {{ departamentoSeleccionado?.department_head }}</p>
@@ -47,6 +47,9 @@
   </div>
 </div>
 
+<div *ngIf="departments.length === 0" class="message-box">
+  No hay elementos registrados.
+</div>
 
 <div class="view-header">
   <h1>Gestión de Departamentos</h1>

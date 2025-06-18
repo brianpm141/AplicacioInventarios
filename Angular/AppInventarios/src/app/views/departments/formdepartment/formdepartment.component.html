@@ -1,53 +1,54 @@
-<!-- formdepartment.component.html -->
-<div class="modal-backdrop" (click)="closeModal()"> 
+<div class="modal-backdrop" *ngIf="isVisible" (click)="onClose()">
   <div class="modal-content" (click)="$event.stopPropagation()">
-
     <div class="modal-header">
-      <h2>{{ departmentToEdit ? 'Editar Departamento' : 'Registrar Departamento' }}</h2>
-      <button class="close-btn" (click)="closeModal()">×</button>
+      <h2>Crear departamento</h2>
+      <button class="close-btn" (click)="onClose()">×</button>
     </div>
-
     <div class="form-container">
+      <!-- Quitamos [disabled] para que siempre puedas hacer submit -->
       <form [formGroup]="departmentForm" (ngSubmit)="onSubmit()">
+        <!-- fila única -->
+        <div class="form-row single-row">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input id="name" type="text" formControlName="name" />
+            <div class="error" *ngIf="departmentForm.get('name')?.touched && departmentForm.get('name')?.invalid">
+              <small>Requerido</small>
+            </div>
+          </div>
 
+          <div class="form-group">
+            <label for="department_head">Líder</label>
+            <input id="department_head" type="text" formControlName="department_head" />
+            <div class="error" *ngIf="departmentForm.get('department_head')?.touched && departmentForm.get('department_head')?.invalid">
+              <small>Requerido</small>
+            </div>
+          </div>
+
+          <div class="form-group abbreviation">
+            <label for="abbreviation">Abreviatura</label>
+            <input id="abbreviation" type="text" formControlName="abbreviation" maxlength="4" />
+            <div class="error" *ngIf="departmentForm.get('abbreviation')?.touched && departmentForm.get('abbreviation')?.invalid">
+              <small>Requerido (máx. 4)</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- descripción -->
         <div class="form-row">
-          <!-- Nombre -->
           <div class="form-group">
-            <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" formControlName="nombre" maxlength="100" />
-            <div class="error" *ngIf="nombre?.invalid && (nombre?.touched || nombre?.dirty)">
-              <small *ngIf="nombre?.errors?.['required']">El nombre es obligatorio.</small>
-              <small *ngIf="nombre?.errors?.['maxlength']">Máximo 100 caracteres.</small>
-            </div>
-          </div>
-
-          <!-- Líder -->
-          <div class="form-group">
-            <label for="lider">Líder de departamento</label>
-            <input type="text" id="lider" formControlName="lider" maxlength="100" />
-            <div class="error" *ngIf="lider?.invalid && (lider?.touched || lider?.dirty)">
-              <small *ngIf="lider?.errors?.['required']">El líder es obligatorio.</small>
-              <small *ngIf="lider?.errors?.['maxlength']">Máximo 100 caracteres.</small>
+            <label for="description">Descripción</label>
+            <textarea id="description" formControlName="description"></textarea>
+            <div class="error" *ngIf="departmentForm.get('description')?.touched && departmentForm.get('description')?.invalid">
+              <small>Requerido</small>
             </div>
           </div>
         </div>
 
-        <!-- Descripción -->
-        <div class="form-group">
-          <label for="descripcion">Descripción</label>
-          <textarea id="descripcion" formControlName="descripcion" rows="3" maxlength="180"></textarea>
-          <div class="error" *ngIf="descripcion?.invalid && (descripcion?.touched || descripcion?.dirty)">
-            <small *ngIf="descripcion?.errors?.['required']">La descripción es obligatoria.</small>
-            <small *ngIf="descripcion?.errors?.['maxlength']">Máximo 500 caracteres.</small>
-          </div>
-        </div>
-
-        <!-- Botones -->
         <div class="form-buttons">
-          <button type="button" class="btn-yellow" (click)="closeModal()">Cancelar</button>
-          <button type="submit" class="btn-green">{{ departmentToEdit ? 'Actualizar' : 'Registrar' }}</button>
+          <button type="button" class="btn-yellow" (click)="onClose()">Cancelar</button>
+          <button type="submit" class="btn-green">Guardar</button>
         </div>
-
       </form>
     </div>
   </div>

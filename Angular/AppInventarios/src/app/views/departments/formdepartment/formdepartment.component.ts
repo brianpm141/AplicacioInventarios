@@ -1,74 +1,83 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  OnChanges,
+  SimpleChanges,
+  EventEmitter,
+  inject
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DepartmentService } from '../../../services/departments/department.service';
+import { DepartmentService, Department } from '../../../services/departments/department.service';
 
 @Component({
   selector: 'app-formdepartment',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],  // <-- aquí es clave
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './formdepartment.component.html',
   styleUrls: ['./formdepartment.component.css'],
   providers: [DepartmentService]
 })
-
-
 export class FormdepartmentComponent implements OnChanges {
-
+  @Input() departmentToEdit: Department | null = null;
   @Input() isVisible = false;
-  @Input() departmentToEdit: any = null;  // <-- Nuevo input
-  @Output() closed = new EventEmitter<void>();
-  @Output() created = new EventEmitter<void>();
+  @Output() created = new EventEmitter<boolean>();
+  @Output() closed  = new EventEmitter<void>();
 
-  departmentForm: FormGroup;
+  departmentForm!: FormGroup;
+  private fb = inject(FormBuilder);
+  private departmentService = inject(DepartmentService);
 
-  constructor(private fb: FormBuilder, private departmentService: DepartmentService) {
+  ngOnChanges(changes: SimpleChanges) {
+    // Cuando el modal se abre (isVisible === true)
+    if (changes['isVisible'] && changes['isVisible'].currentValue) {
+      // 1) reiniciamos el form
+      this.initForm();
+
+      // 2) si venimos a editar, parcheamos los valores
+      if (this.departmentToEdit) {
+        this.departmentForm.patchValue({
+          name:            this.departmentToEdit.name,
+          department_head: this.departmentToEdit.department_head,
+          abbreviation:    this.departmentToEdit.abbreviation,
+          description:     this.departmentToEdit.description
+        });
+      }
+    }
+  }
+
+  private initForm() {
     this.departmentForm = this.fb.group({
-      nombre: ['', [Validators.required, Validators.maxLength(100)]],
-      lider: ['', [Validators.required, Validators.maxLength(100)]],
-      descripcion: ['', [Validators.required, Validators.maxLength(180)]]
+      name:            ['', Validators.required],
+      department_head: ['', Validators.required],
+      abbreviation:    ['', [Validators.required, Validators.maxLength(4)]],
+      description:     ['', Validators.required],
     });
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['departmentToEdit'] && this.departmentToEdit) {
-      this.departmentForm.patchValue({
-        nombre: this.departmentToEdit.name,
-        lider: this.departmentToEdit.department_head,
-        descripcion: this.departmentToEdit.description
-      });
-    } else if (!this.departmentToEdit) {
-      this.departmentForm.reset();
-    }
-  }
-
-  get nombre() { return this.departmentForm.get('nombre'); }
-  get lider() { return this.departmentForm.get('lider'); }
-  get descripcion() { return this.departmentForm.get('descripcion'); }
-
   onSubmit() {
+    this.departmentForm.markAllAsTouched();
     if (this.departmentForm.invalid) return;
 
-    const formData = {
-      name: this.nombre?.value,
-      department_head: this.lider?.value,
-      description: this.descripcion?.value
-    };
+    const obs = this.departmentToEdit
+      ? this.departmentService.updateDepartment(this.departmentToEdit.id!, this.departmentForm.value)
+      : this.departmentService.createDepartment(this.departmentForm.value);
 
-    if (this.departmentToEdit) {
-      this.departmentService.updateDepartment(this.departmentToEdit.id, formData).subscribe(() => {
-        this.created.emit();
-        this.closeModal();
-      });
-    } else {
-      this.departmentService.createDepartment(formData).subscribe(() => {
-        this.created.emit();
-        this.closeModal();
-      });
-    }
+    obs.subscribe({
+      next: () => {
+        this.created.emit(true);
+        this.onClose();
+        this.departmentForm.reset();
+      },
+      error: err => {
+        console.error(err);
+        this.onClose();
+      }
+    });
   }
 
-  closeModal() {
+  onClose(): void {
     this.closed.emit();
   }
 }

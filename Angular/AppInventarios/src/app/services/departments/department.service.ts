@@ -5,8 +5,9 @@ import { Observable } from 'rxjs';
 export interface Department {
   id?: number;
   name: string;
+  abbreviation: string;
   description: string;
-  department_head: string | null;
+  department_head: string;
   status?: number;
 }
 
@@ -26,12 +27,11 @@ export class DepartmentService {
     return this.http.post(this.apiUrl, department);
   }
 
-  deleteDepartment(id: number): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${id}/delete`, {});
+  updateDepartment(id: number, data: Department): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${id}`, data);
   }
 
-  updateDepartment(id: number, data: any) {
-  return this.http.put(`${this.apiUrl}/${id}`, data);
-}
-
+  deleteDepartment(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`);
+  }
 }

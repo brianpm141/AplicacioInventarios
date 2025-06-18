@@ -57,14 +57,16 @@ export class DepartmentsComponent implements OnInit {
   }
 
   onCreated(): void {
-    this.cargarDepartamentos();
+  this.cerrarModal();            // <-- cierra el modal
+  this.cargarDepartamentos();
 
-    if (this.departamentoSeleccionado) {
-      this.mostrarMensaje('Departamento actualizado exitosamente', 'success');
-    } else {
-      this.mostrarMensaje('Departamento registrado exitosamente', 'success');
-    }
+  if (this.departamentoSeleccionado) {
+    this.mostrarMensaje('Departamento actualizado exitosamente', 'success');
+  } else {
+    this.mostrarMensaje('Departamento registrado exitosamente', 'success');
   }
+}
+
 
   seleccionarDepartamento(dept: any): void {
     this.departamentoSeleccionado = this.departamentoSeleccionado === dept ? null : dept;
