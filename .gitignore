@@ -1,6 +1,6 @@
 # Ignorar todo el contenido de los volúmenes de MySQL
-Database/mysql-data/
-Database/mysql-data/**
+Database/volumes
+Database/info
 
 # Pero mantener archivos SQL de estructura o datos
 !Database/*.sql

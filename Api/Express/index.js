@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const cors = require('cors');
 const departmentsRoutes = require('./routes/departments');
+const usersRoutes = require('./routes/users');
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ app.use(express.json()); // para parsear JSON
 
 // Rutas
 app.use('/api/departments', departmentsRoutes);
+app.use('/api/users', usersRoutes);
 
 // Puerto
 const PORT = process.env.PORT || 3000;

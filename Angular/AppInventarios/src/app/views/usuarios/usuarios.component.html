@@ -1,0 +1,86 @@
+<app-registro
+  [isVisible]="showModal"
+  [usuarioToEdit]="usuarioSeleccionado"
+  (closed)="cerrarModal()"
+  (created)="onCreated()">
+</app-registro>
+
+<!-- Confirmación de eliminación -->
+<div *ngIf="showConfirmModal" id="confirm-backdrop">
+  <div id="confirm-modal" (click)="$event.stopPropagation()">
+    <div id="confirm-header">
+      <h2>Confirmar Eliminación</h2>
+      <button id="confirm-close-btn" (click)="cancelarEliminacion()">×</button>
+    </div>
+    <div id="confirm-body">
+      <p>
+        ¿Está seguro que desea eliminar al usuario
+        <strong>{{ usuarioAEliminar?.nombre }} {{ usuarioAEliminar?.apellidos }}</strong>?
+      </p>
+      <div id="confirm-buttons">
+        <button class="btn-yellow" (click)="cancelarEliminacion()">Cancelar</button>
+        <button class="btn-green" (click)="confirmarEliminacion()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Detalle de usuario -->
+<div *ngIf="showDetailModal" id="detail-backdrop" (click)="cerrarDetalle()">
+  <div id="detail-modal" (click)="$event.stopPropagation()">
+    <div id="detail-header">
+      Detalles del usuario
+      <button id="detail-close-btn" (click)="cerrarDetalle()">×</button>
+    </div>
+    <div id="detail-body">
+      <p><strong>Nombre:</strong> {{ usuarioSeleccionado?.nombre }} {{ usuarioSeleccionado?.apellidos }}</p>
+      <p><strong>Usuario:</strong> {{ usuarioSeleccionado?.usuario }}</p>
+      <p><strong>Departamento:</strong> {{ usuarioSeleccionado?.departamento }}</p>
+      <p><strong>Rol:</strong> {{ usuarioSeleccionado?.rol }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="usuario-container">
+  <div *ngIf="usuarios.length === 0" class="message-box">
+    No se detectaron usuarios.
+  </div>
+
+  <div class="view-header">
+    <h1>Gestión de Usuarios</h1>
+    <p>Visualiza, registra y administra los usuarios del sistema.</p>
+  </div>
+
+  <div class="list-container">
+    <div class="list-content">
+      <div
+        class="item-card"
+        *ngFor="let usr of usuarios"
+        [class.selected]="usr === usuarioSeleccionado"
+        (click)="mostrarDetalles(usr)">
+        <div class="card-row">
+          <div class="card-info">
+            <div><strong>Usuario:</strong> {{ usr.usuario }}</div>
+            <div><strong>Nombre:</strong> {{ usr.nombre }} {{ usr.apellidos }}</div>
+          </div>
+          <div class="card-actions">
+            <button
+              class="action-btn"
+              title="Editar"
+              (click)="abrirEditar(usr); $event.stopPropagation()">
+              <img src="icons/editar.png" class="icon-action" />
+            </button>
+            <button
+              class="action-btn"
+              title="Eliminar"
+              (click)="openConfirmDelete(usr); $event.stopPropagation()">
+              <img src="icons/borrar.png" class="icon-action" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="floating-new-btn" (click)="abrirModal()">Nuevo</button>
+</div>

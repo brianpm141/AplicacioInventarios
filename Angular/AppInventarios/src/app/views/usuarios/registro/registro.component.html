@@ -1,0 +1,102 @@
+<!-- registro.component.html -->
+<div class="modal-backdrop" *ngIf="isVisible" (click)="regresar()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      {{ usuarioToEdit ? 'Editar Usuario' : 'Nuevo Usuario' }}
+      <button class="close-btn" (click)="regresar()">×</button>
+    </div>
+    <div class="form-container">
+      <form [formGroup]="registroForm" (ngSubmit)="registrarUsuario()">
+        <!-- Fila 1 -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input id="nombre" formControlName="nombre" placeholder="Nombre" />
+            <div *ngIf="registroForm.get('nombre')?.invalid && registroForm.get('nombre')?.touched" class="error">
+              <small>Nombre es requerido</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="apellidos">Apellidos</label>
+            <input id="apellidos" formControlName="apellidos" placeholder="Apellidos" />
+            <div *ngIf="registroForm.get('apellidos')?.invalid && registroForm.get('apellidos')?.touched" class="error">
+              <small>Apellidos son requeridos</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fila 2 -->
+        <div class="form-row single-row">
+          <div class="form-group">
+            <label for="departamento">Departamento</label>
+            <select id="departamento" formControlName="departamento">
+              <option value="" disabled>Seleccione...</option>
+              <option value="sistemas">Sistemas</option>
+              <option value="compras">Compras</option>
+              <option value="almacen">Almacén</option>
+            </select>
+            <div *ngIf="registroForm.get('departamento')?.invalid && registroForm.get('departamento')?.touched" class="error">
+              <small>Departamento es requerido</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fila 3 -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="usuario">Usuario</label>
+            <input id="usuario" formControlName="usuario" placeholder="Nombre de usuario" />
+            <div *ngIf="registroForm.get('usuario')?.invalid && registroForm.get('usuario')?.touched" class="error">
+              <small>Usuario es requerido</small>
+            </div>
+          </div>
+          <div class="form-group abbreviation">
+            <label for="rol">Rol</label>
+            <select id="rol" formControlName="rol">
+              <option value="" disabled>Seleccione...</option>
+              <option value="admin">Administrador</option>
+              <option value="user">Usuario</option>
+            </select>
+            <div *ngIf="registroForm.get('rol')?.invalid && registroForm.get('rol')?.touched" class="error">
+              <small>Rol es requerido</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fila 4 -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="contrasena">Contraseña</label>
+            <input id="contrasena" type="password" formControlName="contrasena" placeholder="Contraseña" />
+            <div *ngIf="registroForm.get('contrasena')?.invalid && registroForm.get('contrasena')?.touched" class="error">
+              <small>Contraseña es requerida</small>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="confirmar">Confirmar contraseña</label>
+            <input id="confirmar" type="password" formControlName="confirmar" placeholder="Confirmar contraseña" />
+            <div *ngIf="!contraseniasCoinciden && registroForm.get('confirmar')?.touched" class="error">
+              <small>Las contraseñas no coinciden</small>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botones -->
+        <div class="form-buttons">
+          <button type="submit" class="btn-green">
+            {{ usuarioToEdit ? 'Actualizar' : 'Aceptar' }}
+          </button>
+          <button type="button" class="btn-yellow" (click)="regresar()">Regresar</button>
+        </div>
+      </form>
+
+      <!-- Mensajes globales -->
+      <div *ngIf="mostrarMensajeRegistro" class="modal-mensaje">
+        {{ usuarioToEdit ? 'Usuario actualizado con éxito!' : 'Usuario registrado con éxito!' }}
+      </div>
+      <div *ngIf="mostrarErrorCampos" class="modal-error">
+        Por favor, llene todos los campos.
+      </div>
+    </div>
+  </div>
+</div>

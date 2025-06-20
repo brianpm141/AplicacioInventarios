@@ -1,0 +1,190 @@
+/* registro.component.css */
+/* --- Modal genérico --- */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.35s ease-out forwards;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-content {
+  background: #f0f7ff;
+  border-radius: 20px;
+  width: 50vw;
+  max-width: 70vw;
+  transform: scale(0.8);
+  animation: scaleIn 0.35s ease-out forwards;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+@keyframes scaleIn {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Header */
+.modal-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem 2rem;
+  background: #aacbee;
+  color: #172954;
+  border-radius: 20px 20px 0 0;
+  font-weight: bold;
+  font-size: 1.2rem;
+  position: relative;
+}
+.close-btn {
+  position: absolute;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+/* Contenido del formulario */
+.form-container {
+  padding: 3%;
+  background: #f0f7ff;
+  border-radius: 0 0 20px 20px;
+}
+form {
+  width: 100%;
+}
+
+/* Filas y grupos */
+.form-row {
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+.form-row.single-row {
+  flex-wrap: nowrap;
+  gap: 1.5rem;
+}
+.form-group {
+  flex: 1 1 45%;
+  min-width: 200px;
+}
+.form-group.abbreviation {
+  flex: 1 1 30%;
+  min-width: 150px;
+}
+
+/* Labels e inputs */
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+input,
+select,
+textarea {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid #aacbee;
+  border-radius: 12px;
+  box-sizing: border-box;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+  outline: none;
+}
+textarea {
+  height: 120px;
+  resize: none;
+}
+
+/* Botones */
+.form-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+.btn-green,
+.btn-yellow {
+  padding: 0.9rem 2rem;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.2s;
+}
+.btn-green {
+  background: #28a745;
+  color: #fff;
+}
+.btn-green:hover {
+  background: #218838;
+  transform: translateY(-2px);
+}
+.btn-yellow {
+  background: #ffc107;
+  color: #212529;
+}
+.btn-yellow:hover {
+  background: #e0a800;
+  transform: translateY(-2px);
+}
+
+/* Errores inline */
+.error {
+  color: #cf2e2e;
+  text-align: center;
+  margin-top: 0.5rem;
+}
+.error small {
+  background: #fde;
+  border: 1px solid #cf2e2e;
+  padding: 0.4rem 0.6rem;
+  border-radius: 10px;
+}
+
+/* Mensajes globales */
+.modal-mensaje,
+.modal-error {
+  margin-top: 1.5rem;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
+  font-size: 0.9rem;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+.modal-mensaje {
+  background: #d4edda;
+  color: #155724;
+}
+.modal-error {
+  background: #f8d7da;
+  color: #721c24;
+}
