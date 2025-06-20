@@ -83,10 +83,11 @@
 
         <!-- Botones -->
         <div class="form-buttons">
-          <button type="submit" class="btn-green">
-            {{ usuarioToEdit ? 'Actualizar' : 'Aceptar' }}
-          </button>
           <button type="button" class="btn-yellow" (click)="regresar()">Regresar</button>
+          <button type="submit" class="btn-green">
+            {{ usuarioToEdit ? 'Actualizar' : 'Guardar' }} 
+          </button>
+          
         </div>
       </form>
 
