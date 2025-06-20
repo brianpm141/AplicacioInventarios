@@ -20,7 +20,6 @@
 
     <div id="confirm-body">
       <p>¿Está seguro que desea eliminar el departamento <strong>{{ departamentoAEliminar?.name }}</strong>?</p>
-
       <div id="confirm-buttons">
         <button class="btn-yellow" (click)="cancelarEliminacion()">Cancelar</button>
         <button class="btn-green" (click)="confirmarEliminacion()">Eliminar</button>
@@ -47,8 +46,8 @@
   </div>
 </div>
 
-<div *ngIf="departments.length === 0" class="message-box">
-  No hay elementos registrados.
+<div *ngIf="departments.length === 0 && !cargaFallida" class="message-box">
+  No se detectaron departamentos.
 </div>
 
 <div class="view-header">
@@ -66,8 +65,8 @@
     (click)="mostrarDetalles(dept)" >
       <div class="card-row">
         <div class="card-info">
+          <div><strong>Dep: </strong> {{ dept.abbreviation }} </div>
           <div><strong>Nombre:</strong> {{ dept.name }}</div>
-          <div><strong>Descripción:</strong> {{ dept.description }}</div>
         </div>
 
         <div class="card-actions">

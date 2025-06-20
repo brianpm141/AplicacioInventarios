@@ -20,6 +20,8 @@ export class DepartmentsComponent implements OnInit {
   showMessage = false;
   messageText = '';
   messageType: 'success' | 'error' = 'success';
+  errorflag = false;
+  cargaFallida = false;
 
   showConfirmModal = false;
   departamentoAEliminar: any = null;
@@ -31,15 +33,21 @@ export class DepartmentsComponent implements OnInit {
   }
 
   cargarDepartamentos(): void {
-    this.departmentService.getDepartments().subscribe({
-      next: data => this.departments = data ?? [],
-      error: err => {
-        console.error('Error al obtener los departamentos', err);
-        this.departments = [];
-        this.mostrarMensaje('Error al obtener los departamentos', 'error');
-      }
-    });
-  }
+  this.cargaFallida = false; // resetear antes de cargar
+  this.departmentService.getDepartments().subscribe({
+    next: data => {
+      this.departments = data ?? [];
+      this.cargaFallida = false;
+    },
+    error: err => {
+      console.error('Error al obtener los departamentos', err);
+      this.departments = [];
+      this.cargaFallida = true;
+      this.mostrarMensaje('Error al obtener los departamentos', 'error');
+    }
+  });
+}
+
 
   abrirEditar(dept: any) {
     this.departamentoSeleccionado = dept;
@@ -100,11 +108,14 @@ export class DepartmentsComponent implements OnInit {
   }
 
   mostrarMensaje(texto: string, tipo: 'success' | 'error') {
-    this.messageText = texto;
-    this.messageType = tipo;
-    this.showMessage = true;
+  this.messageText = texto;
+  this.messageType = tipo;
+  this.showMessage = true;
+
+  if (tipo === 'success') {
     setTimeout(() => this.showMessage = false, 3000);
   }
+}
 
   mostrarDetalles(dept: any) {
   this.departamentoSeleccionado = dept;

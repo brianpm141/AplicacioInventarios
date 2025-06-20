@@ -13,15 +13,9 @@ INSERT INTO departments (id, name, description, status) VALUES
 (12, 'Farmacia', 'Departamento encargado de la gestión y suministro de medicamentos', 1);
 
 
-
-INSERT INTO floors (id, name, description, status) VALUES
-(1, 'Planta Baja', 'Área de recepción y atención al cliente', 1),
-(2, 'Primer Piso', 'Oficinas administrativas y salas de reunión', 1),
-(3, 'Segundo Piso', 'Departamento de desarrollo y soporte técnico', 1);
-
 INSERT INTO categories (id, name, description, type, status) VALUES
-(1, 'Equipo', 'Dispositivos electrónicos como laptops o pc', 1, 1),
-(2, 'Consumible', 'Equipo para funcionamiento de sistemas', 2, 1)
+(1, 'CPU', 'Dispositivos electrónicos como laptops o pc', 1, 1),
+(2, 'Laptop', 'Equipo para funcionamiento de sistemas', 2, 1)
 
 INSERT INTO areas (id, name, description, type, status, id_floor) VALUES
 (1, 'Recepción', 'Área de recepción principal', 1, 1, 1),
