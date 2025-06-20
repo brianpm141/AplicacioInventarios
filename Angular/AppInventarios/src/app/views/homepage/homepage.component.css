@@ -1,13 +1,16 @@
 .container {
-  background-color: #eff7ff;
-  height: auto;
-  max-width: 70vw; /* Controla el ancho máximo para limitar las columnas */
+  background-color: transparent;
+  height: 80vh;
+  max-width: 70vw;
   margin: 2rem auto;
   text-align: center;
   border-radius: 20px;
   padding: 2rem;
   box-sizing: border-box;
   overflow-y: auto;
+  justify-content: center;
+  text-align: center;
+  padding: auto;
 }
 
 h1 {
@@ -34,7 +37,6 @@ p {
   border: 3px solid transparent;
   border-radius: 20px;
   padding: 2rem 1rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
   text-align: center;
   transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
@@ -46,31 +48,7 @@ p {
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-}
-
-.card:nth-child(1):hover {
-  border-color: #9400ff;
-}
-.card:nth-child(2):hover {
-  border-color: #7a00d1;
-}
-.card:nth-child(3):hover {
-  border-color: #b233ff;
-}
-.card:nth-child(4):hover {
-  border-color: #a300f0;
-}
-.card:nth-child(5):hover {
-  border-color: #8700e6;
-}
-.card:nth-child(6):hover {
-  border-color: #c266ff;
-}
-.card:nth-child(7):hover {
-  border-color: #8000cc;
-}
-.card:nth-child(8):hover {
-  border-color: #9900ff;
+  border-color: #1d53d8;
 }
 
 .card img {
@@ -92,4 +70,45 @@ p {
   color: #555b6e;
   font-size: 0.9rem;
   line-height: 1.2;
+}
+
+/* ADAPTACIÓN PARA MÓVILES */
+@media (max-width: 600px) {
+  .container {
+    max-width: 95vw;
+    padding: 1.2rem;
+    margin: 1rem auto;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  p {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .card {
+    max-width: 90%;
+    padding: 1.5rem 1rem;
+  }
+
+  .card img {
+    width: 50px;
+    height: 50px;
+  }
+
+  .card span {
+    font-size: 1rem;
+  }
+
+  .card small {
+    font-size: 0.85rem;
+  }
 }

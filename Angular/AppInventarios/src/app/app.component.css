@@ -6,6 +6,7 @@
   width: 100%;
   height: calc(100vh - 30px); /* para no tapar el header */
   transition: all 0.3s ease;
+  background-color: #f0f7ff;
 }
 
 .main {

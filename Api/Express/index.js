@@ -5,7 +5,6 @@ const departmentsRoutes = require('./routes/departments');
 const usersRoutes = require('./routes/users');
 
 dotenv.config();
-
 const app = express();
 
 app.use(cors({origin: 'http://localhost:4200'}))

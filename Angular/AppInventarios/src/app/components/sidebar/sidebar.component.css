@@ -9,7 +9,6 @@
 
 .sidebar-container {
   width: 250px; /* ancho fijo o pon el que uses */
-  background-color: #bfdffe;
   transition: transform 0.3s ease;
 }
 
@@ -18,13 +17,13 @@
 }
 
 .menu-toggle {
-  width: 3vw;
   height: 5vh;
+  width: 5vh;
   margin-top: 60px;
   margin-left: 230px;
-  border-radius: 25%;
+  border-radius: 50%;
   border: none;
-  background-color: #93ccfd;
+  background-color: #bfddfe;
   color: #1e49af;
   font-size: 2vh;
   cursor: pointer;
@@ -38,7 +37,7 @@
 
 /* Nav Table */
 .nav-table {
-  margin: -3vh auto 0 auto;
+  margin: 6vh auto 0 auto;
   width: 80%;
   height: 55%;
 }
@@ -86,7 +85,7 @@
 }
 
 .nav-btn.active {
-  background-color: #eff7ff;
+  background-color: #dbebfe;
   border: 1px solid #256feb;
   border-style: outset;
   color: #1e49af;
