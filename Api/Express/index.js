@@ -5,9 +5,9 @@ const departmentsRoutes = require('./routes/departments');
 const usersRoutes = require('./routes/users');
 const databaseRoutes = require('./routes/database');
 const backupConfigRoutes = require('./routes/backupConfig');
-const { programarRespaldo } = require('./cron/autoBackup');
+const { iniciarCronAutomatico } = require('./cron/autoBackup');
 
-programarRespaldo();
+iniciarCronAutomatico();
 
 dotenv.config();
 const app = express();

@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const pool = require('../db');
+const { reiniciarCron } = require('../cron/autoBackup');
 
 // Obtener configuración activa
 router.get('/', async (req, res) => {
@@ -28,6 +29,8 @@ router.post('/', async (req, res) => {
     `, [tipo, diaSemana || null, diaMes || null, mesAnual || null, hora]);
 
     res.json({ message: 'Configuración guardada correctamente' });
+    
+    await reiniciarCron();
   } catch (err) {
     console.error('Error al guardar configuración:', err);
     res.status(500).json({ error: 'Error al guardar configuración' });
