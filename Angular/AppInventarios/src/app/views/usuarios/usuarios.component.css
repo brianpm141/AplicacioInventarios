@@ -6,7 +6,7 @@
 
 .view-header {
   width: 90%;
-  margin-left: 3vw;
+  margin-left: 70px;
   color: #00234b;
 }
 .view-header h1 {
@@ -14,7 +14,7 @@
   margin-bottom: 0.5rem;
 }
 .view-header p {
-  font-size: 1.1rem;
+  margin-left: 1vw;
   color: #444;
 }
 
@@ -26,7 +26,6 @@
   background: #f0f7ff;
   padding: 3%;
   border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow-y: auto;
 }
 .list-content {
@@ -261,4 +260,163 @@
 #detail-body p {
   margin-bottom: 1rem;
   word-break: break-word;
+}
+
+/* Adaptaciones para pantallas hasta 768px */
+@media screen and (max-width: 768px) {
+  .view-header {
+    width: 100%;
+    margin: 1rem auto;
+    text-align: center;
+  }
+  .view-header h1 {
+    font-size: 1.5rem;
+  }
+  .view-header p {
+    font-size: 1rem;
+  }
+
+  .list-container {
+    width: 95vw;
+    height: auto;
+    margin: 1rem auto;
+    padding: 2%;
+  }
+
+  .card-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .card-info {
+    gap: 3px;
+  }
+  .card-actions {
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+  }
+
+  .item-card {
+    padding: 1rem;
+  }
+
+  .floating-new-btn {
+    bottom: 3vh;
+    right: 3vw;
+    padding: 8px 20px;
+    font-size: 1rem;
+  }
+
+  /* Modales */
+  #confirm-modal,
+  #detail-modal,
+  .modal-content {
+    width: 90vw;
+    max-width: 90vw;
+  }
+}
+
+/* ========= Adaptaciones móviles (hasta 768px) ========== */
+@media screen and (max-width: 768px) {
+  .usuario-container {
+    width: 100%;
+    margin: 1rem auto;
+  }
+
+  .view-header {
+    width: 100%;
+    margin: 1rem auto;
+    margin-left: 0;
+    text-align: center;
+  }
+  .view-header h1 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+  }
+  .view-header p {
+    margin-left: 0;
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
+  .list-container {
+    width: 95vw;
+    height: auto;
+    margin: 1rem auto;
+    padding: 2%;
+  }
+
+  .card-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .card-info {
+    gap: 3px;
+  }
+  .card-actions {
+    justify-content: flex-end;
+    margin-top: 0.5rem;
+  }
+
+  .item-card {
+    padding: 1rem;
+  }
+
+  .floating-new-btn {
+    bottom: 3vh;
+    right: 3vw;
+    padding: 8px 20px;
+    font-size: 1rem;
+  }
+
+  .message-box {
+    width: 95vw;
+    margin: 1rem auto;
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  /* Modales */
+  #confirm-modal,
+  #detail-modal {
+    width: 90vw;
+    max-width: 90vw;
+    margin: 0 1rem;
+  }
+}
+
+/* ==== Ajustes extra para pantallas muy pequeñas (hasta 480px) ==== */
+@media screen and (max-width: 480px) {
+  .view-header {
+    width: 100%;
+    margin: 1rem auto;
+    text-align: center;
+  }
+  .view-header h1 {
+    font-size: 1.5rem;
+  }
+  .view-header p {
+    font-size: 1rem;
+  }
+
+  .card-row {
+    padding: 0.5rem 0;
+  }
+  .card-info div {
+    font-size: 0.9rem;
+  }
+
+  .action-btn {
+    font-size: 0.4rem;
+  }
+  .btn-green,
+  .btn-yellow {
+    padding: 0.7rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .message-box {
+    font-size: 0.9rem;
+    margin-top: 1rem;
+  }
 }

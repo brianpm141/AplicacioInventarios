@@ -1,0 +1,56 @@
+.main.container {
+  display: flex;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Panel izquierdo (menú) */
+.left-container {
+  width: 250px;
+  background-color: #f0f7ff;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  padding-top: 3vh;
+  box-sizing: border-box;
+}
+.left-container table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+}
+.left-container td {
+  padding: 0.5rem 1rem;
+  vertical-align: middle;
+}
+.left-container button {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  color: #172954;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  box-sizing: border-box;
+}
+.left-container button:hover {
+  background-color: rgba(30, 74, 175, 0.1);
+  color: #1e4aaf;
+}
+.left-container button:active {
+  background-color: #dbebfe;
+  color: #1e49af;
+}
+
+/* Panel derecho (contenido dinámico) */
+.rigth-container {
+  flex: 1;
+  padding: 1rem;
+  overflow: auto;
+  box-sizing: border-box;
+}

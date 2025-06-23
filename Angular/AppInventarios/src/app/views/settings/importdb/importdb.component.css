@@ -1,0 +1,174 @@
+:root {
+  --main-color: #1746a2;
+  --background-color: #e6f0ff;
+  --error-color: #ff3b3b;
+  --success-color: #00a86b;
+  --text-color: #0f0f0f;
+  --button-hover: #0b2e91;
+  --button-active: #467ce6;
+  --button-disabled: #a0aab4;
+}
+
+.import-db-container {
+  max-width: 480px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: var(--background-color);
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(23, 41, 84, 0.2);
+  text-align: center;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.import-db-container h2 {
+  color: var(--main-color);
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.import-db-container input[type="file"] {
+  display: block;
+  margin: 1.5rem auto;
+  padding: 0.6rem;
+  border: 2px dashed var(--main-color);
+  border-radius: 8px;
+  background-color: #ffffff;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+}
+
+.import-db-container input[type="file"]:hover {
+  border-color: var(--button-hover);
+}
+
+.import-db-container input[type="file"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.import-db-container button {
+  padding: 0.7rem 1.6rem;
+  background-color: var(--main-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.25s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(23, 41, 84, 0.2);
+}
+
+.import-db-container button:hover:not(:disabled) {
+  background-color: var(--button-hover);
+  transform: scale(1.05);
+}
+
+.import-db-container button:active:not(:disabled) {
+  background-color: var(--button-active);
+}
+
+.import-db-container button:disabled {
+  background-color: var(--button-disabled);
+  cursor: not-allowed;
+}
+
+.import-db-container p {
+  margin-top: 1.2rem;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.import-db-container .error {
+  color: var(--error-color);
+}
+
+.import-db-container .success {
+  color: var(--success-color);
+}
+
+/* Modal confirmación */
+.confirm-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.confirm-modal {
+  background-color: #ffffff;
+  border: 3px solid var(--error-color);
+  border-radius: 14px;
+  padding: 2rem;
+  max-width: 400px;
+  width: 90%;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease-in-out;
+  text-align: center;
+}
+
+.confirm-header h3 {
+  color: var(--error-color);
+  margin-bottom: 1rem;
+  font-size: 1.6rem;
+}
+
+.confirm-body p {
+  color: var(--text-color);
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.btn-cancel,
+.btn-danger {
+  padding: 0.6rem 1.4rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  border: none;
+  transition: all 0.25s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-cancel {
+  background-color: #1746a2;
+  color: #fff;
+}
+
+.btn-cancel:hover {
+  background-color: #0055ff;
+}
+
+.btn-danger {
+  background-color: #c40000;
+  color: #fff;
+}
+
+.btn-danger:hover {
+  background-color: #ff0000;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

@@ -1,108 +1,97 @@
 <div class="sidebar-wrapper">
-  <div class="sidebar-container" [class.sidebar-hidden]="!sidebarVisible()">
-  
+  <div class="sidebar-container" [class.sidebar-collapsed]="!sidebarVisible()">
     <!-- 
     <button class="menu-toggle" (click)="toggleSidebar()">
       {{ sidebarVisible() ? '❮' : '❯' }}
     </button>
     -->
+    <table class="nav-table">
+      <tr>
+        <td>
+          <button class="nav-btn" routerLink="/building" routerLinkActive="active">
+            <img src="icons/pc.png" class="icon" />
+            <span class="text-label">Equipos</span>
+          </button>
+        </td>
+      </tr>
 
-  <table class="nav-table">
-    <tr>
-      <td colspan="2">
-        <button class="nav-btn" routerLink="/building" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-          <img src="icons/pc.png" class="icon" />
-          Equipos
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <button class="nav-btn" routerLink="/building" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-          <img src="icons/usb.png" class="icon" />
-          Consumibles
-        </button>
-      </td>
-    </tr>
-    <tr>
-      <td colspan="2">
-        <button class="nav-btn" routerLink="/building" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-          <img src="icons/list.png" class="icon" />
-          Formatos
-        </button>
-      </td>
-    </tr>
+      <tr>
+        <td>
+          <button class="nav-btn" routerLink="/building" routerLinkActive="active">
+            <img src="icons/usb.png" class="icon" />
+            <span class="text-label">Consumibles</span>
+          </button>
+        </td>
+      </tr>
 
-    <tr><td colspan="2"><div class="line"></div></td></tr>
+      <tr>
+        <td>
+          <button class="nav-btn" routerLink="/building" routerLinkActive="active">
+            <img src="icons/list.png" class="icon" />
+            <span class="text-label">Formatos</span>
+          </button>
+        </td>
+      </tr>
 
-    <tr>
-      <td colspan="2">
-        <button class="nav-btn" routerLink="/building" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-          <img src="icons/floor.png" class="icon" />
-          Pisos
-        </button>
-      </td>
-    </tr>
+      <tr><td><div class="line"></div></td></tr>
 
-    <tr>
-      <td colspan="2">
-        <button class="nav-btn" routerLink="/building" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-          <img src="icons/area.png" class="icon" />
-          Áreas
-        </button>
-      </td>
-    </tr>
+      <tr>
+        <td>
+          <button class="nav-btn" routerLink="/building" routerLinkActive="active">
+            <img src="icons/floor.png" class="icon" />
+            <span class="text-label">Pisos</span>
+          </button>
+        </td>
+      </tr>
 
-    <tr>
-      <td colspan="2">
-        <button class="nav-btn" routerLink="/departments" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-          <img src="icons/department.png" class="icon" />
-          Departamentos
-        </button>
-      </td>
-    </tr>
+      <tr>
+        <td>
+          <button class="nav-btn" routerLink="/building" routerLinkActive="active">
+            <img src="icons/area.png" class="icon" />
+            <span class="text-label">Áreas</span>
+          </button>
+        </td>
+      </tr>
 
-    <tr><td colspan="2"><div class="line"></div></td></tr>
+      <tr>
+        <td>
+          <button class="nav-btn" routerLink="/departments" routerLinkActive="active">
+            <img src="icons/department.png" class="icon" />
+            <span class="text-label">Departamentos</span>
+          </button>
+        </td>
+      </tr>
 
-    <tr>
-      <td colspan="2">
-        <button class="nav-btn" routerLink="/usuarios" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-          <img src="icons/user.png" class="icon" />
-          Usuarios
-        </button>
-      </td>
-    </tr>
+      <tr><td><div class="line"></div></td></tr>
 
-    <tr>
-      <td colspan="2">
-        <button class="nav-btn" routerLink="/building" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-          <img src="icons/hist.png" class="icon" />
-          Historial
-        </button>
-      </td>
-    </tr>
+      <tr>
+        <td>
+          <button class="nav-btn" routerLink="/usuarios" routerLinkActive="active">
+            <img src="icons/user.png" class="icon" />
+            <span class="text-label">Usuarios</span>
+          </button>
+        </td>
+      </tr>
 
-    <tr>
-      <td colspan="2">
-        <button class="nav-btn" routerLink="/plantillaf" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-          <img src="icons/hist.png" class="icon" />
-          Plantilla form
-        </button>
-      </td>
-    </tr>
+      <tr>
+        <td>
+          <button class="nav-btn" routerLink="/building" routerLinkActive="active">
+            <img src="icons/hist.png" class="icon" />
+            <span class="text-label">Historial</span>
+          </button>
+        </td>
+      </tr>
 
-    <tr>
-      <td colspan="2">
-        <button class="nav-btn" routerLink="/plantillav" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-          <img src="icons/hist.png" class="icon" />
-          Plantilla vista
-        </button>
-      </td>
-    </tr>
-  </table>
+      <tr>
+        <td>
+          <button class="nav-btn" routerLink="/settings" routerLinkActive="active">
+            <img src="icons/settings.png" class="icon" />
+            <span class="text-label">Configuracion</span>
+          </button>
+        </td>
+      </tr>
 
-  <div class="logout-container">
-    <img src="icons/settings.png" class="settings-icon" />
+    </table>
+
   </div>
-
 </div>

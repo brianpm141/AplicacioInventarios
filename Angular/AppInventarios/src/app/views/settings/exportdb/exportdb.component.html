@@ -1,0 +1,11 @@
+<div class="export-db-container">
+  <h2>Exportar Base de Datos</h2>
+
+  <button (click)="onExport()"  class="export-btn">
+    {{ cargando ? 'Generando respaldo...' : 'Descargar Backup' }}
+  </button>
+
+  <p *ngIf="message" [ngClass]="{ 'error': error, 'success': !error }" class="export-message">
+    {{ message }}
+  </p>
+</div>
