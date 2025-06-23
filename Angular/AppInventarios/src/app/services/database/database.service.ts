@@ -16,4 +16,13 @@ export class DatabaseService {
     form.append('file', file, file.name);
     return this.http.post(`${this.api}/restore`, form);
   }
+
+  getBackupConfig() {
+  return this.http.get<any>('http://localhost:3000/api/backup-config');
+}
+
+saveBackupConfig(data: any) {
+  return this.http.post('http://localhost:3000/api/backup-config', data);
+}
+
 }
