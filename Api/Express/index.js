@@ -4,6 +4,10 @@ const cors = require('cors');
 const departmentsRoutes = require('./routes/departments');
 const usersRoutes = require('./routes/users');
 const databaseRoutes = require('./routes/database');
+const backupConfigRoutes = require('./routes/backupConfig');
+const { programarRespaldo } = require('./cron/autoBackup');
+
+programarRespaldo();
 
 dotenv.config();
 const app = express();
@@ -15,6 +19,7 @@ app.use(express.json()); // para parsear JSON
 app.use('/api/departments', departmentsRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/database', databaseRoutes);
+app.use('/api/backup-config', backupConfigRoutes);
 // Puerto
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
