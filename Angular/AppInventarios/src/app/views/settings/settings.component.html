@@ -1,11 +1,31 @@
 <div class="main container">
   <div class="left-container">
     <table>
-      <tr><td><button (click)="opcion = 'categorias'">Categorias</button></td></tr>
-      <tr><td><button (click)="opcion = 'importar'">Importar Datos</button></td></tr>
-      <tr><td><button (click)="opcion = 'exportar'">Exportar Datos</button></td></tr>
-      <tr><td><button (click)="opcion = 'respaldos'">Configurar Respaldos automáticos</button></td></tr>
-      <tr><td><button (click)="opcion = 'cerrar'">Cerrar Sesión</button></td></tr>
+      <tr><td>
+  <button (click)="opcion = 'categorias'" 
+          [ngClass]="{ 'active-btn': opcion === 'categorias' || opcion === ''}">Categorías</button>
+</td></tr>
+
+<tr><td>
+  <button (click)="opcion = 'importar'" 
+          [ngClass]="{ 'active-btn': opcion === 'importar' }">Importar Datos</button>
+</td></tr>
+
+<tr><td>
+  <button (click)="opcion = 'exportar'" 
+          [ngClass]="{ 'active-btn': opcion === 'exportar' }">Exportar Datos</button>
+</td></tr>
+
+<tr><td>
+  <button (click)="opcion = 'respaldos'" 
+          [ngClass]="{ 'active-btn': opcion === 'respaldos' }">Configurar Respaldos automáticos</button>
+</td></tr>
+
+<tr><td>
+  <button (click)="opcion = 'cerrar'" 
+          [ngClass]="{ 'active-btn': opcion === 'cerrar' }">Cerrar Sesión</button>
+</td></tr>
+
     </table>
   </div>
 
@@ -14,5 +34,7 @@
     <app-importdb *ngSwitchCase="'importar'"></app-importdb>
     <app-exportdb *ngSwitchCase="'exportar'"></app-exportdb>
     <app-progresp *ngSwitchCase="'respaldos'"></app-progresp>
+    <app-categories *ngSwitchCase="''"></app-categories>
+
   </div>
 </div>

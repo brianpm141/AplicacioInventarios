@@ -1,12 +1,12 @@
 <div class="view-header">
-  <p>Administra las categorías registradas</p>
+  <h1>Administra las categorías de equipos y consumibles</h1>
 </div>
 
 <div class="form-section">
   <form [formGroup]="categoryForm" (ngSubmit)="submitForm()">
     <div>
       <label for="name">Nombre</label>
-      <input id="name" type="text" formControlName="name" placeholder="Nombre de la categoría" />
+      <input id="name" type="text" formControlName="name" placeholder="Nombre" />
     </div>
 
     <div>
@@ -22,7 +22,7 @@
       </select>
     </div>
 
-    <div>
+    <div class="form-buttons">
       <button type="submit" [disabled]="categoryForm.invalid">
         {{ isEditing ? 'Actualizar' : 'Crear' }}
       </button>
@@ -49,9 +49,38 @@
         <td>{{ getTypeLabel(cat.type) }}</td>
         <td class="actions">
           <button (click)="editCategory(cat)">Editar</button>
-          <button (click)="deleteCategory(cat.id)">Eliminar</button>
+          <button (click)="confirmDelete(cat.id)">Eliminar</button>
         </td>
       </tr>
     </tbody>
   </table>
+</div>
+
+<!-- 🟢 Mensaje de éxito -->
+<div class="message-box success" *ngIf="successMessage">
+  <div class="icon">✔️</div>
+  {{ successMessage }}
+</div>
+
+<!-- 🔴 Mensaje de error -->
+<div class="message-box error" *ngIf="errorMessage">
+  <div class="icon">❌</div>
+  {{ errorMessage }}
+</div>
+
+<!-- 🟠 Confirmación de eliminación -->
+<div id="confirm-backdrop" *ngIf="confirmId !== null">
+  <div id="confirm-modal">
+    <div id="confirm-header">
+      Confirmar Eliminación
+      <button id="confirm-close-btn" (click)="confirmId = null">&times;</button>
+    </div>
+    <div id="confirm-body">
+      ¿Estás seguro de eliminar esta categoría?
+      <div id="confirm-buttons">
+        <button class="btn-green" (click)="deleteCategory(confirmId!)">Sí, eliminar</button>
+        <button class="btn-yellow" (click)="confirmId = null">Cancelar</button>
+      </div>
+    </div>
+  </div>
 </div>

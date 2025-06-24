@@ -1,56 +1,62 @@
 .view-header {
   width: 90%;
-  margin-left: 70px;
+  margin-left: 50px;
   color: #00234b;
 }
 
 .view-header h1 {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
+  font-size: 1.6rem;
+  margin-bottom: 0.2rem;
 }
 
 .view-header p {
-  font-size: 1.1rem;
+  font-size: 0.95rem;
   color: #444;
 }
 
 .form-section {
-  width: 70vw;
-  margin: auto;
-  margin-top: 2vh;
+  width: 65vw;
+  margin: 2vh auto;
   background: #f0f7ff;
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
 .form-section form {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1rem;
 }
 
 .form-section label {
+  font-size: 0.9rem;
   font-weight: bold;
   color: #00234b;
 }
 
 .form-section input,
 .form-section select {
-  padding: 0.6rem 0.8rem;
+  padding: 0.4rem 0.6rem;
   border: 1px solid #aacbee;
   border-radius: 6px;
-  font-size: 1rem;
+  font-size: 0.9rem;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
 }
 
 .form-section button {
-  align-self: flex-start;
   background-color: #28a745;
   color: white;
-  padding: 0.6rem 1.5rem;
+  padding: 0.4rem 1.2rem;
   border: none;
-  border-radius: 6px;
-  font-weight: bold;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
@@ -58,13 +64,22 @@
   background-color: #218838;
 }
 
+.cancel-btn {
+  background-color: #ffc107;
+  color: #212529;
+}
+
+.cancel-btn:hover {
+  background-color: #e0a800;
+}
+
 .table-section {
-  width: 70vw;
-  margin: 3vh auto;
+  width: 65vw;
+  margin: 2vh auto;
   background: #ffffff;
-  padding: 2rem;
+  padding: 1.5rem;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.07);
 }
 
 table {
@@ -79,18 +94,15 @@ thead {
 
 thead th {
   text-align: left;
-  padding: 0.75rem;
-  font-size: 1rem;
-}
-
-tbody tr {
-  border-bottom: 1px solid #e0e0e0;
+  padding: 0.6rem;
+  font-size: 0.85rem;
 }
 
 tbody td {
-  padding: 0.75rem;
-  font-size: 0.95rem;
+  padding: 0.6rem;
+  font-size: 0.85rem;
   color: #333;
+  border-bottom: 1px solid #eee;
 }
 
 tbody tr:hover {
@@ -102,27 +114,148 @@ tbody tr:hover {
   border: none;
   color: #0d47a1;
   cursor: pointer;
-  margin-right: 10px;
-  font-weight: bold;
+  margin-right: 8px;
+  font-size: 0.85rem;
 }
 
 .actions button:hover {
   color: #00234b;
+  font-weight: bold;
   transform: scale(1.05);
 }
 
-.cancel-btn {
-  background-color: #ffc107;
-  color: #212529;
-  margin-left: 1rem;
-  padding: 0.5rem 1.2rem;
-  border-radius: 6px;
-  border: none;
+/* 💬 Mensajes flotantes */
+
+.message-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1.2rem 2rem;
+  border-radius: 12px;
   font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  font-size: 1rem;
+  z-index: 2000;
+  opacity: 0.95;
+  text-align: center;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-.cancel-btn:hover {
+.success {
+  background-color: #e8fce9;
+  color: #0f7a0f;
+  border: 2px solid #0cc510;
+}
+
+.error {
+  background-color: #ffe5e5;
+  color: #a10000;
+  border: 2px solid #cf2e2e;
+}
+
+.message-box .icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+#confirm-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+}
+
+#confirm-modal {
+  background: #fff5f5;
+  border-radius: 16px;
+  width: 80vw;
+  max-width: 400px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  animation: scaleInConfirm 0.3s ease-out forwards;
+}
+
+@keyframes scaleInConfirm {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+#confirm-header {
+  background: #d32f2f;
+  color: white;
+  padding: 1rem;
+  border-radius: 16px 16px 0 0;
+  font-weight: bold;
+  font-size: 1.1rem;
+  position: relative;
+  text-align: center;
+}
+
+#confirm-close-btn {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+  cursor: pointer;
+}
+
+#confirm-body {
+  padding: 1.5rem;
+  font-size: 0.95rem;
+  color: #2d0000;
+  text-align: center;
+}
+
+#confirm-buttons {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn-green {
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  background-color: #d32f2f;
+  color: white;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-green:hover {
+  background-color: #b71c1c;
+  transform: translateY(-2px);
+}
+
+.btn-yellow {
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  background-color: #ffc107;
+  color: #212529;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-yellow:hover {
   background-color: #e0a800;
+  transform: translateY(-2px);
 }

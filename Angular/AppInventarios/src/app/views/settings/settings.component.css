@@ -8,7 +8,7 @@
 
 /* Panel izquierdo (menú) */
 .left-container {
-  width: 250px;
+  width: 190px;
   background-color: #f0f7ff;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   padding-top: 3vh;
@@ -31,7 +31,7 @@
   background: transparent;
   border: none;
   border-radius: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: #172954;
   text-align: left;
   cursor: pointer;
@@ -53,4 +53,10 @@
   padding: 1rem;
   overflow: auto;
   box-sizing: border-box;
+}
+
+/* Botón activo seleccionado */
+.active-btn {
+  color: #1e4aaf;
+  font-weight: bold;
 }

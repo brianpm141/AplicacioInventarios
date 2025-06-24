@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CategoriesService } from '../../../services/categories/categories.service';
 
 @Component({
@@ -16,6 +16,10 @@ export class CategoriesComponent implements OnInit {
   isEditing = false;
   editId: number | null = null;
 
+  successMessage: string | null = null;
+  errorMessage: string | null = null;
+  confirmId: number | null = null;
+
   constructor(
     private fb: FormBuilder,
     private categoryService: CategoriesService
@@ -23,7 +27,7 @@ export class CategoriesComponent implements OnInit {
     this.categoryForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      type: [0, Validators.required],
+      type: [0, Validators.required] // 0 = Equipos, 1 = Consumibles
     });
   }
 
@@ -32,25 +36,27 @@ export class CategoriesComponent implements OnInit {
   }
 
   loadCategories() {
-    this.categoryService.getAll().subscribe((data: any) => {
-      this.categories = data;
+    this.categoryService.getAll().subscribe({
+      next: (data: any) => this.categories = data,
+      error: () => this.showError('Error al cargar categorías')
     });
   }
 
   submitForm() {
     if (this.categoryForm.invalid) return;
 
-    if (this.isEditing && this.editId !== null) {
-      this.categoryService.update(this.editId, this.categoryForm.value).subscribe(() => {
+    const action = this.isEditing && this.editId !== null
+      ? this.categoryService.update(this.editId, this.categoryForm.value)
+      : this.categoryService.create(this.categoryForm.value);
+
+    action.subscribe({
+      next: () => {
+        this.showSuccess(this.isEditing ? 'Categoría actualizada' : 'Categoría creada');
         this.resetForm();
         this.loadCategories();
-      });
-    } else {
-      this.categoryService.create(this.categoryForm.value).subscribe(() => {
-        this.resetForm();
-        this.loadCategories();
-      });
-    }
+      },
+      error: () => this.showError('Error al guardar categoría')
+    });
   }
 
   editCategory(category: any) {
@@ -63,21 +69,41 @@ export class CategoriesComponent implements OnInit {
     this.editId = category.id;
   }
 
+  confirmDelete(id: number) {
+    this.confirmId = id;
+  }
+
   deleteCategory(id: number) {
-    if (confirm('¿Estás seguro de eliminar esta categoría?')) {
-      this.categoryService.delete(id).subscribe(() => {
+    this.categoryService.delete(id).subscribe({
+      next: () => {
+        this.showSuccess('Categoría eliminada');
+        this.confirmId = null;
         this.loadCategories();
-      });
-    }
+      },
+      error: () => {
+        this.showError('Error al eliminar categoría');
+        this.confirmId = null;
+      }
+    });
   }
 
   resetForm() {
-    this.categoryForm.reset({ type: 1 });
+    this.categoryForm.reset({ type: 0 });
     this.isEditing = false;
     this.editId = null;
   }
 
   getTypeLabel(type: number): string {
-  return type === 0 ? 'Equipos' : 'Consumibles';
+    return type === 0 ? 'Equipos' : 'Consumibles';
+  }
+
+  showSuccess(msg: string) {
+    this.successMessage = msg;
+    setTimeout(() => this.successMessage = null, 3000);
+  }
+
+  showError(msg: string) {
+    this.errorMessage = msg;
+    setTimeout(() => this.errorMessage = null, 3000);
   }
 }
