@@ -2,55 +2,78 @@ services:
   mysql:
     image: mysql:8.0
     restart: always
+    env_file:
+      - ./.env
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-    ports:
-      - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     networks:
-      - backend
+      backend:
+        ipv4_address: 172.20.0.10
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   api:
     build:
       context: ./Api
       dockerfile: Dockerfile
     restart: always
-    command: npx nodemon Express/src/index.js
-    volumes:
-      - ./Api/Express:/app
-      - /app/node_modules
+    command: npx nodemon src/index.js
+    env_file:
+      - ./.env
     ports:
       - "3000:3000"
+    volumes:
+      - ./Api/Express:/app
+      - ./Api/Express/backups:/app/backups
+      - ./Api/Express/uploads:/app/uploads
+      - node_modules_api:/app/node_modules
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     networks:
-      - backend
-      - frontend
+      backend:
+        ipv4_address: 172.20.0.20
 
   angular:
     build:
       context: ./Angular
       dockerfile: Dockerfile
+    restart: always
     command: npx ng serve --host 0.0.0.0 --poll=100
-    volumes:
-      - ./Angular/AppInventarios:/app
-      - /app/node_modules
     ports:
       - "4200:4200"
+    volumes:
+      - ./Angular/AppInventarios:/app
+      - node_modules_angular:/app/node_modules
     depends_on:
       - api
     networks:
-      - frontend
+      frontend:
+        ipv4_address: 172.21.0.10
 
 volumes:
   mysql_data:
+  node_modules_api:
+  node_modules_angular:
 
 networks:
   backend:
     driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.20.0.0/24
   frontend:
     driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.21.0.0/24

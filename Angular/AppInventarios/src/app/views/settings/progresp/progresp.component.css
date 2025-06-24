@@ -1,0 +1,64 @@
+.backup-settings-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: #fdfdfd;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.field {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-weight: bold;
+}
+
+select,
+input[type="number"] {
+  width: 100%;
+  padding: 0.4rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.hora-picker {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.hora-picker select {
+  width: auto;
+  padding: 0.3rem;
+}
+
+button {
+  width: 100%;
+  padding: 0.6rem;
+  background-color: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #125ca1;
+}
+
+p {
+  text-align: center;
+  margin-top: 1rem;
+  color: #333;
+}

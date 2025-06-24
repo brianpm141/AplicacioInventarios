@@ -1,0 +1,63 @@
+------------Creacion api--------------
+
+----------------1 Creacion archivo rutas--------------
+
+En la carpeta de routes crear el archivo nombre.js
+
+	Ej: departments.js	
+
+Dentro del archivo routes agregar los metodos necesarios 
+
+	GET, POST, PUT, DELETE
+
+----------------2 archivo index.js--------------
+
+importar el archivo de routes al inicio
+
+	Ej: const departmentsRoutes = require('./routes/departments');	
+
+agregar la ruta de la api
+
+	Ej: app.use('/api/departments', departmentsRoutes);
+
+
+
+
+-------------------Servicio en Angular------------------------
+
+
+---------------- 1 Creacion de componente--------------
+
+	ng generate component views/[nombre]
+
+	
+	--------- Componentes hijos----------------
+
+	ng generate component views/[nombre]/[componentehijo]
+
+
+----------- 2 Colocación en archivo app.routes.ts----------------
+
+Importamos el componente: 
+
+	Ejemplo: import { SettingsComponent } from './views/settings/settings.component';
+
+Colocamos el path de la ruta:
+
+	Ejemplo:   { path: 'settings', component: SettingsComponent , title : 'Configuracion'},
+
+Ruta lista para usar
+
+
+---------- 3 Creación del servicio en angular -------------------------
+
+
+	ng generate service services/[nombre carpeta]/[nombre servicio]
+
+
+
+
+
+
+
+

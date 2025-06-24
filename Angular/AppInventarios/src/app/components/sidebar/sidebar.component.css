@@ -1,4 +1,5 @@
 .sidebar-wrapper {
+  margin-top: 3vh;
   position: fixed;
   top: 0;
   left: 0;
@@ -8,12 +9,14 @@
 }
 
 .sidebar-container {
-  width: 250px; /* ancho fijo o pon el que uses */
-  transition: transform 0.3s ease;
+  width: 250px;
+  transition: width 0.3s ease;
+  overflow: hidden;
+  background-color: #f0f7ff;
 }
 
-.sidebar-hidden {
-  transform: translateX(-100%);
+.sidebar-collapsed {
+  width: 60px;
 }
 
 .menu-toggle {
@@ -35,7 +38,6 @@
   transform: translateX(-10%) scale(0.9);
 }
 
-/* Nav Table */
 .nav-table {
   margin: 6vh auto 0 auto;
   width: 80%;
@@ -71,6 +73,10 @@
   width: auto;
   transition: transform 0.3s ease;
   min-height: 20px;
+}
+
+.sidebar-collapsed .nav-btn span.text-label {
+  display: none;
 }
 
 .nav-btn:hover {
@@ -116,4 +122,11 @@
 
 .settings-icon:hover {
   transform: translateX(-50%) scale(1.2);
+}
+
+.logout-container {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
 }

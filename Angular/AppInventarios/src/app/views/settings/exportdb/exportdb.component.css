@@ -1,0 +1,49 @@
+.export-db-container {
+  max-width: 500px;
+  margin: 2rem auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.export-db-container h2 {
+  color: var(--main-blue);
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+}
+
+.export-btn {
+  margin-top: 5vh;
+  background-color: #01275f;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(23, 70, 162, 0.4);
+}
+
+.export-btn:hover {
+  background-color: #0066ff;
+  transform: scale(1.05);
+}
+
+.export-db-container .error {
+  margin-top: 10vh;
+  color: var(--error-red);
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.export-db-container .success {
+  margin-top: 10vh;
+  color: #00c853;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+.export-message {
+  margin-top: 5vh;
+  font-size: 1.2rem;
+}

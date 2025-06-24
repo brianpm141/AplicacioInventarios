@@ -1,0 +1,35 @@
+<!-- Modal de Confirmación -->
+<div class="confirm-backdrop" *ngIf="showConfirm">
+  <div class="confirm-modal" (click)="$event.stopPropagation()">
+    <div class="confirm-header">
+      <h3>⚠ Confirmación Requerida</h3>
+    </div>
+    <div class="confirm-body">
+      <p>¿Estás seguro que deseas importar esta base de datos? Esta acción podría sobrescribir información existente.</p>
+    </div>
+    <div class="confirm-actions">
+      <button class="btn-cancel" (click)="cancelImport()">Cancelar</button>
+      <button class="btn-danger" (click)="confirmImport()">Sí, importar</button>
+    </div>
+  </div>
+</div>
+
+<div class="import-db-container">
+  <h2>Importar Base de Datos</h2>
+
+  <label class="custom-file-label">
+  Seleccionar archivo
+  <input type="file" accept=".sql" (change)="onFileSelected($event)" [disabled]="cargando" />
+</label>
+
+  <button (click)="abrirConfirmacion()" [disabled]="!selectedFile || cargando">
+  {{ cargando ? 'Importando respaldo...' : 'Importar' }}
+</button>
+
+  <p
+    *ngIf="message"
+    [ngClass]="{ 'error': error, 'success': !error }"
+  >
+    {{ message }}
+  </p>
+</div>

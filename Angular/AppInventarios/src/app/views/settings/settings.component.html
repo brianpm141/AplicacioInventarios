@@ -1,0 +1,18 @@
+<div class="main container">
+  <div class="left-container">
+    <table>
+      <tr><td><button (click)="opcion = 'categorias'">Categorias</button></td></tr>
+      <tr><td><button (click)="opcion = 'importar'">Importar Datos</button></td></tr>
+      <tr><td><button (click)="opcion = 'exportar'">Exportar Datos</button></td></tr>
+      <tr><td><button (click)="opcion = 'respaldos'">Configurar Respaldos automáticos</button></td></tr>
+      <tr><td><button (click)="opcion = 'cerrar'">Cerrar Sesión</button></td></tr>
+    </table>
+  </div>
+
+  <div class="rigth-container" [ngSwitch]="opcion">
+    <app-categories *ngSwitchCase="'categorias'"></app-categories>
+    <app-importdb *ngSwitchCase="'importar'"></app-importdb>
+    <app-exportdb *ngSwitchCase="'exportar'"></app-exportdb>
+    <app-progresp *ngSwitchCase="'respaldos'"></app-progresp>
+  </div>
+</div>
