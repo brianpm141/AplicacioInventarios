@@ -5,7 +5,7 @@ const departmentsRoutes = require('./routes/departments');
 const usersRoutes = require('./routes/users');
 const databaseRoutes = require('./routes/database');
 const backupConfigRoutes = require('./routes/backupConfig');
-const { categoriesRoutes } = require('./routes/categories');
+const categoriesRoutes = require('./routes/categories');
 const { iniciarCronAutomatico } = require('./cron/autoBackup');
 
 iniciarCronAutomatico();
@@ -13,7 +13,12 @@ iniciarCronAutomatico();
 dotenv.config();
 const app = express();
 
-app.use(cors({origin: 'http://localhost:4200'}))
+
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type']
+}));
 app.use(express.json()); // para parsear JSON
 
 // Rutas
@@ -24,6 +29,6 @@ app.use('/api/backup-config', backupConfigRoutes);
 app.use('/api/categories', categoriesRoutes);
 // Puerto
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`Servidor API escuchando en puerto ${PORT}`);
 });

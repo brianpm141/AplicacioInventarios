@@ -1,1 +1,57 @@
-<p>categories works!</p>
+<div class="view-header">
+  <p>Administra las categorías registradas</p>
+</div>
+
+<div class="form-section">
+  <form [formGroup]="categoryForm" (ngSubmit)="submitForm()">
+    <div>
+      <label for="name">Nombre</label>
+      <input id="name" type="text" formControlName="name" placeholder="Nombre de la categoría" />
+    </div>
+
+    <div>
+      <label for="description">Descripción</label>
+      <input id="description" type="text" formControlName="description" placeholder="Descripción" />
+    </div>
+
+    <div>
+      <label for="type">Tipo</label>
+      <select id="type" formControlName="type">
+        <option [value]="0">Equipos</option>
+        <option [value]="1">Consumibles</option>
+      </select>
+    </div>
+
+    <div>
+      <button type="submit" [disabled]="categoryForm.invalid">
+        {{ isEditing ? 'Actualizar' : 'Crear' }}
+      </button>
+      <button type="button" class="cancel-btn" *ngIf="isEditing" (click)="resetForm()">Cancelar</button>
+    </div>
+  </form>
+</div>
+
+<div class="table-section">
+  <h3>Listado de Categorías</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Descripción</th>
+        <th>Tipo</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let cat of categories">
+        <td>{{ cat.name }}</td>
+        <td>{{ cat.description }}</td>
+        <td>{{ getTypeLabel(cat.type) }}</td>
+        <td class="actions">
+          <button (click)="editCategory(cat)">Editar</button>
+          <button (click)="deleteCategory(cat.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

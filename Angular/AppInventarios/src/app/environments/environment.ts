@@ -1,5 +1,5 @@
 // src/environments/environment.ts
 export const environment = {
   production: false,
-  apiUrl: 'http://api:3000/api'
+  apiUrl: 'http://192.168.1.77:3000'
 };

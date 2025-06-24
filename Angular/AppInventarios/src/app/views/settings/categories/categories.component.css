@@ -1,0 +1,128 @@
+.view-header {
+  width: 90%;
+  margin-left: 70px;
+  color: #00234b;
+}
+
+.view-header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.view-header p {
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.form-section {
+  width: 70vw;
+  margin: auto;
+  margin-top: 2vh;
+  background: #f0f7ff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.form-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.form-section label {
+  font-weight: bold;
+  color: #00234b;
+}
+
+.form-section input,
+.form-section select {
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #aacbee;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.form-section button {
+  align-self: flex-start;
+  background-color: #28a745;
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.form-section button:hover {
+  background-color: #218838;
+}
+
+.table-section {
+  width: 70vw;
+  margin: 3vh auto;
+  background: #ffffff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background-color: #dbecfe;
+  color: #00234b;
+}
+
+thead th {
+  text-align: left;
+  padding: 0.75rem;
+  font-size: 1rem;
+}
+
+tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+tbody td {
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+tbody tr:hover {
+  background-color: #f0f7ff;
+}
+
+.actions button {
+  background: transparent;
+  border: none;
+  color: #0d47a1;
+  cursor: pointer;
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.actions button:hover {
+  color: #00234b;
+  transform: scale(1.05);
+}
+
+.cancel-btn {
+  background-color: #ffc107;
+  color: #212529;
+  margin-left: 1rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-btn:hover {
+  background-color: #e0a800;
+}
