@@ -10,8 +10,10 @@
   </div>
 
   <div class="rigth-container" [ngSwitch]="opcion">
+    <app-categorias *ngSwitchCase="'categorias'"></app-categorias>
     <app-importdb *ngSwitchCase="'importar'"></app-importdb>
     <app-exportdb *ngSwitchCase="'exportar'"></app-exportdb>
+    <app-progresp *ngSwitchCase="'respaldos'"></app-progresp>
     <app-building *ngSwitchDefault></app-building>
   </div>
 </div>

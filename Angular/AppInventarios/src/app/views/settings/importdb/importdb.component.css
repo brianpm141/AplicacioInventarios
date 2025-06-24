@@ -1,27 +1,13 @@
-:root {
-  --main-color: #1746a2;
-  --background-color: #e6f0ff;
-  --error-color: #ff3b3b;
-  --success-color: #00a86b;
-  --text-color: #0f0f0f;
-  --button-hover: #0b2e91;
-  --button-active: #467ce6;
-  --button-disabled: #a0aab4;
-}
-
 .import-db-container {
   max-width: 480px;
   margin: 3rem auto;
   padding: 2rem;
-  background: var(--background-color);
   border-radius: 14px;
-  box-shadow: 0 8px 20px rgba(23, 41, 84, 0.2);
   text-align: center;
-  font-family: "Segoe UI", sans-serif;
 }
 
 .import-db-container h2 {
-  color: var(--main-color);
+  color: #0b2e91;
   font-size: 2rem;
   margin-bottom: 1.5rem;
 }
@@ -30,7 +16,7 @@
   display: block;
   margin: 1.5rem auto;
   padding: 0.6rem;
-  border: 2px dashed var(--main-color);
+  border: 2px dashed #0b2e91;
   border-radius: 8px;
   background-color: #ffffff;
   cursor: pointer;
@@ -38,7 +24,7 @@
 }
 
 .import-db-container input[type="file"]:hover {
-  border-color: var(--button-hover);
+  border-color: #467ce6;
 }
 
 .import-db-container input[type="file"]:disabled {
@@ -48,7 +34,7 @@
 
 .import-db-container button {
   padding: 0.7rem 1.6rem;
-  background-color: var(--main-color);
+  background-color: #0b2e91;
   color: white;
   border: none;
   border-radius: 8px;
@@ -60,16 +46,16 @@
 }
 
 .import-db-container button:hover:not(:disabled) {
-  background-color: var(--button-hover);
+  background-color: #467ce6;
   transform: scale(1.05);
 }
 
 .import-db-container button:active:not(:disabled) {
-  background-color: var(--button-active);
+  background-color: #467ce6;
 }
 
 .import-db-container button:disabled {
-  background-color: var(--button-disabled);
+  background-color: #d0d7e6;
   cursor: not-allowed;
 }
 
@@ -103,7 +89,7 @@
 
 .confirm-modal {
   background-color: #ffffff;
-  border: 3px solid var(--error-color);
+  border: 3px solid #ff3b3b;
   border-radius: 14px;
   padding: 2rem;
   max-width: 400px;

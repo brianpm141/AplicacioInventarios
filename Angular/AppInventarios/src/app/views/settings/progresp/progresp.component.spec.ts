@@ -1,17 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AutobackupComponent } from './autobackup.component';
 
-describe('AutobackupComponent', () => {
-  let component: AutobackupComponent;
-  let fixture: ComponentFixture<AutobackupComponent>;
+import { ProgrespComponent } from './progresp.component';
+
+describe('ProgrespComponent', () => {
+  let component: ProgrespComponent;
+  let fixture: ComponentFixture<ProgrespComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AutobackupComponent]
+      imports: [ProgrespComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AutobackupComponent);
+    fixture = TestBed.createComponent(ProgrespComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
