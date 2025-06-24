@@ -5,8 +5,8 @@ const departmentsRoutes = require('./routes/departments');
 const usersRoutes = require('./routes/users');
 const databaseRoutes = require('./routes/database');
 const backupConfigRoutes = require('./routes/backupConfig');
-const { iniciarCronAutomatico } = require('./cron/autoBackup');
 const { categoriesRoutes } = require('./routes/categories');
+const { iniciarCronAutomatico } = require('./cron/autoBackup');
 
 iniciarCronAutomatico();
 
