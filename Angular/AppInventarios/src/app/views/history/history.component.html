@@ -1,0 +1,153 @@
+<!-- Mensaje de éxito o error -->
+<div *ngIf="showMessage" [ngClass]="{'message-box': true, 'success': messageType === 'success', 'error': messageType === 'error'}"> 
+  <div class="icon-container">
+    <span *ngIf="messageType === 'success'" class="icon">
+      <img src="img/suc.png" class="icon-mess" />
+    </span>
+    <span *ngIf="messageType === 'error'" class="icon">
+      <img src="img/error.png" class="icon-mess" />
+    </span>
+  </div>
+  <p>{{ messageText }}</p>
+</div>
+
+<!-- Modal de confirmación -->
+<div *ngIf="showConfirmModal" id="confirm-backdrop">
+  <div id="confirm-modal" (click)="$event.stopPropagation()">
+    <div id="confirm-header">
+      <h2>Confirmar Eliminación</h2>
+      <button id="confirm-close-btn" (click)="cancelarEliminacion()">×</button>
+    </div>
+    <div id="confirm-body">
+      <p>¿Deseas eliminar permanentemente el movimiento del <strong>{{ movimientoAEliminar?.movement_time }}</strong>?</p>
+      <div id="confirm-buttons">
+        <button class="btn-yellow" (click)="cancelarEliminacion()">Cancelar</button>
+        <button class="btn-green" (click)="ejecutarEliminacion()">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Detalles -->
+<div *ngIf="showDetailModal" id="detail-backdrop" (click)="cerrarDetalle()">
+  <div id="detail-modal" (click)="$event.stopPropagation()">
+    <div id="detail-header">
+      Detalles del Movimiento
+      <button id="detail-close-btn" (click)="cerrarDetalle()">×</button>
+    </div>
+    <div id="detail-body">
+      <p><strong>Fecha:</strong> {{ movimientoSeleccionado?.movement_time }}</p>
+      <p><strong>Tabla:</strong> {{ movimientoSeleccionado?.affected_table }}</p>
+      <p><strong>Tipo:</strong> {{ getTipoMovimiento(movimientoSeleccionado?.change_type || 0) }}</p>
+      <p><strong>Usuario:</strong> {{ movimientoSeleccionado?.user_name }}</p>
+
+      <!-- Solo si es modificación -->
+      <div class="modificacion-contenedor" *ngIf="esModificacion()">
+        <div class="tabla-columna">
+          <p><strong>Antes:</strong></p>
+          <table class="info-table">
+            <tr *ngFor="let campo of filtrarCampos(movimientoSeleccionado?.before_info, ['id', 'status'])">
+              <td><strong>{{ campo.key }}:</strong></td>
+              <td>{{ campo.value }}</td>
+            </tr>
+          </table>
+        </div>
+        <div class="tabla-columna">
+          <p><strong>Después:</strong></p>
+          <table class="info-table">
+            <tr *ngFor="let campo of filtrarCampos(movimientoSeleccionado?.after_info, ['id', 'status'])">
+              <td><strong>{{ campo.key }}:</strong></td>
+              <td>{{ campo.value }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
+      <!-- Eliminación -->
+      <ng-container *ngIf="movimientoSeleccionado?.change_type === 3">
+        <p><strong>Antes:</strong></p>
+        <table class="info-table">
+          <tr *ngFor="let campo of filtrarCampos(movimientoSeleccionado?.before_info, ['id', 'status'])">
+            <td><strong>{{ campo.key }}:</strong></td>
+            <td>{{ campo.value }}</td>
+          </tr>
+        </table>
+      </ng-container>
+
+      <!-- Creación -->
+      <ng-container *ngIf="movimientoSeleccionado?.change_type === 1">
+        <p><strong>Después:</strong></p>
+        <table class="info-table">
+          <tr *ngFor="let campo of filtrarCampos(movimientoSeleccionado?.after_info, ['id', 'status'])">
+            <td><strong>{{ campo.key }}:</strong></td>
+            <td>{{ campo.value }}</td>
+          </tr>
+        </table>
+      </ng-container>
+
+      <!-- Eliminación permanente -->
+      <ng-container *ngIf="movimientoSeleccionado?.change_type === 4">
+        <p><strong>Antes:</strong></p>
+        <table class="info-table">
+          <tr *ngFor="let campo of filtrarCampos(movimientoSeleccionado?.before_info, ['id', 'status'])">
+            <td><strong>{{ campo.key }}:</strong></td>
+            <td>{{ campo.value }}</td>
+          </tr>
+        </table>
+      </ng-container>
+
+      <!-- Restauración -->
+      <ng-container *ngIf="movimientoSeleccionado?.change_type === 5">
+        <p><strong>Antes:</strong></p>
+        <table class="info-table">
+          <tr *ngFor="let campo of filtrarCampos(movimientoSeleccionado?.before_info, ['id', 'status'])">
+            <td><strong>{{ campo.key }}:</strong></td>
+            <td>{{ campo.value }}</td>
+          </tr>
+        </table>
+        <p><strong>Después:</strong></p>
+        <table class="info-table">
+          <tr *ngFor="let campo of filtrarCampos(movimientoSeleccionado?.after_info, ['id', 'status'])">
+            <td><strong>{{ campo.key }}:</strong></td>
+            <td>{{ campo.value }}</td>
+          </tr>
+        </table>
+      </ng-container>
+    </div>
+
+    <!-- Acciones -->
+    <div class="detail-actions" *ngIf="movimientoSeleccionado?.change_type === 2">
+      <button class="btn-yellow" (click)="revertirCambios()">Revertir Cambios</button>
+    </div>
+    <div class="detail-actions" *ngIf="movimientoSeleccionado?.change_type === 3">
+      <button class="btn-yellow" (click)="cancelarEliminacion()">Cancelar</button>
+      <button class="btn-green" (click)="onRestaurarSeleccionado()">Restaurar</button>
+      <button class="btn-red" (click)="onConfirmarEliminacionSeleccionado()">Eliminar Permanentemente</button>
+    </div>
+  </div>
+</div>
+
+<!-- Encabezado -->
+<div class="view-header">
+  <h1>Historial de Cambios</h1>
+  <p>Consulta, restaura o elimina cambios registrados en el sistema.</p>
+</div>
+
+<!-- Lista de movimientos -->
+<div class="list-container">
+  <div class="list-content">
+    <div 
+      class="item-card" 
+      *ngFor="let mov of history"
+      (click)="mostrarDetalles(mov)">
+      <div class="card-row">
+        <div class="card-info">
+          <div><strong>Fecha:</strong> {{ mov.movement_time }}</div>
+          <div><strong>Tabla:</strong> {{ mov.affected_table }}</div>
+          <div><strong>Tipo:</strong> {{ getTipoMovimiento(mov.change_type) }}</div>
+          <div><strong>Usuario:</strong> {{ mov.user_name }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
