@@ -10,6 +10,7 @@ import { NotfoundComponent } from './views/notfound/notfound.component';
 import { PlantillaFormularioComponent } from './views/plantilla-formulario/plantilla-formulario.component';
 import { PlantillaVistaComponent } from './views/plantilla-vista/plantilla-vista.component';
 import { DepartmentsComponent } from './views/departments/departments.component';
+import { HistoryComponent } from './views/history/history.component';
 
 @Component({
   standalone: true,
@@ -23,7 +24,8 @@ import { DepartmentsComponent } from './views/departments/departments.component'
     NotfoundComponent,
     PlantillaFormularioComponent,
     PlantillaVistaComponent,
-    DepartmentsComponent
+    DepartmentsComponent,
+    HistoryComponent
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
