@@ -37,3 +37,15 @@ INSERT INTO devices (id, brand, model, serial_number, category_id, group_id, are
 (1, 'Dell', 'Latitude 7420', 'SN123456A', 1, NULL, 1, 1),
 (2, 'HP', 'LaserJet Pro M404', 'SN987654B', 2, NULL, 2, 1),
 (3, 'Lenovo', 'ThinkPad E14', 'SN456789C', 1, NULL, 5, 1);
+
+
+INSERT INTO passwords (id, password_hash) VALUES
+(1,'123456789'),
+(2,'123456789'),
+(3,'123456789'),
+
+-- Inserta usuarios con diferentes roles
+INSERT INTO users (name, last_name, username, role, password_id, status) VALUES
+('Juan', 'Perez', 'juan_perez', 1, 1, 1),  -- Usuario con role 1
+('Carlos', 'Gomez', 'carlos_gomez', 2, 2, 1),  -- Usuario con role 2
+('Ana', 'Martinez', 'ana_martinez', 3, 3, 1);  -- Usuario con role 3
