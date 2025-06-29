@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';  // Asegúrate de importar CommonModule
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CategoriesService } from '../../../services/categories/categories.service';
 
 @Component({
   selector: 'app-categories',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule], // Asegúrate de agregar CommonModule aquí
   templateUrl: './categories.component.html',
   styleUrls: ['./categories.component.css']
 })
@@ -15,6 +15,7 @@ export class CategoriesComponent implements OnInit {
   categoryForm: FormGroup;
   isEditing = false;
   editId: number | null = null;
+  customFields: any[] = [];
 
   successMessage: string | null = null;
   errorMessage: string | null = null;
@@ -27,7 +28,7 @@ export class CategoriesComponent implements OnInit {
     this.categoryForm = this.fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
-      type: [0, Validators.required] // 0 = Equipos, 1 = Consumibles
+      type: [0, Validators.required],  // 0 = Equipos, 1 = Consumibles
     });
   }
 
@@ -39,6 +40,19 @@ export class CategoriesComponent implements OnInit {
     this.categoryService.getAll().subscribe({
       next: (data: any) => this.categories = data,
       error: () => this.showError('Error al cargar categorías')
+    });
+  }
+
+  loadCustomFields(categoryId: number) {
+    this.categoryService.getCustomFields(categoryId).subscribe({
+      next: (data: any) => {
+        this.customFields = data;
+        // Añadir los campos personalizados al formulario
+        this.customFields.forEach(field => {
+          this.categoryForm.addControl(field.name, this.fb.control('', Validators.required));
+        });
+      },
+      error: () => this.showError('Error al cargar campos personalizados')
     });
   }
 
@@ -67,6 +81,7 @@ export class CategoriesComponent implements OnInit {
     });
     this.isEditing = true;
     this.editId = category.id;
+    this.loadCustomFields(category.id);  // Cargar los campos personalizados
   }
 
   confirmDelete(id: number) {
@@ -91,6 +106,7 @@ export class CategoriesComponent implements OnInit {
     this.categoryForm.reset({ type: 0 });
     this.isEditing = false;
     this.editId = null;
+    this.customFields = [];
   }
 
   getTypeLabel(type: number): string {

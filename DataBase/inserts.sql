@@ -40,9 +40,9 @@ INSERT INTO devices (id, brand, model, serial_number, category_id, group_id, are
 
 
 INSERT INTO passwords (id, password_hash) VALUES
-(1,'123456789'),
-(2,'123456789'),
-(3,'123456789'),
+(1,'$2b$10$HwrqMWIuInlhD7IqRUoDcefGjzzvmP4VWN.FYjAK.3uoe8ZrpDKAC'),
+(2,'$2b$10$HwrqMWIuInlhD7IqRUoDcefGjzzvmP4VWN.FYjAK.3uoe8ZrpDKAC'),
+(3,'$2b$10$HwrqMWIuInlhD7IqRUoDcefGjzzvmP4VWN.FYjAK.3uoe8ZrpDKAC');
 
 -- Inserta usuarios con diferentes roles
 INSERT INTO users (name, last_name, username, role, password_id, status) VALUES

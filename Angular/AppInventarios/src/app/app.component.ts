@@ -5,12 +5,8 @@ import { filter, map } from 'rxjs';
 import { SidebarService } from './services/sidebar/sidebar.service';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { BuildingComponent } from './views/building/building.component';
-import { NotfoundComponent } from './views/notfound/notfound.component';
-import { PlantillaFormularioComponent } from './views/plantilla-formulario/plantilla-formulario.component';
-import { PlantillaVistaComponent } from './views/plantilla-vista/plantilla-vista.component';
-import { DepartmentsComponent } from './views/departments/departments.component';
-import { HistoryComponent } from './views/history/history.component';
+import { LogginComponent} from './views/loggin/loggin.component'
+import { AuthService} from './services/auth/auth.service'
 
 @Component({
   standalone: true,
@@ -20,12 +16,7 @@ import { HistoryComponent } from './views/history/history.component';
     RouterOutlet,
     HeaderComponent,
     SidebarComponent,
-    BuildingComponent,
-    NotfoundComponent,
-    PlantillaFormularioComponent,
-    PlantillaVistaComponent,
-    DepartmentsComponent,
-    HistoryComponent
+    LogginComponent,
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
@@ -37,8 +28,14 @@ export class AppComponent {
   private router = inject(Router);
   private route = inject(ActivatedRoute);
   private sidebarService = inject(SidebarService);
+  private authService = inject(AuthService);
+
+  isAuthenticated : boolean = false
 
   constructor() {
+
+    this.isAuthenticated = this.authService.isLoggedIn(); 
+
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
       map(() => {

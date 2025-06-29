@@ -8,6 +8,7 @@ const backupConfigRoutes = require('./routes/backupConfig');
 const categoriesRoutes = require('./routes/categories');
 const historyRoutes = require('./routes/history');
 const { iniciarCronAutomatico } = require('./cron/autoBackup');
+const authRoutes = require('./routes/auth');
 
 iniciarCronAutomatico();
 
@@ -29,6 +30,7 @@ app.use('/api/database', databaseRoutes);
 app.use('/api/backup-config', backupConfigRoutes);
 app.use('/api/categories', categoriesRoutes);
 app.use('/api/history', historyRoutes);
+app.use('/api/auth', authRoutes);
 // Puerto
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, '0.0.0.0', () => {

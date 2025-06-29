@@ -5,6 +5,7 @@ import { ImportdbComponent } from './importdb/importdb.component';
 import { BuildingComponent } from '../building/building.component';
 import { ProgrespComponent } from './progresp/progresp.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { AuthService} from '../../services/auth/auth.service'
 
 @Component({
   selector: 'app-settings',
@@ -16,4 +17,11 @@ import { CategoriesComponent } from './categories/categories.component';
 
 export class SettingsComponent {
   opcion: string = '';
+
+  constructor( private authService: AuthService){}
+
+  logout(){
+    this.authService.logout();
+  }
+
 }

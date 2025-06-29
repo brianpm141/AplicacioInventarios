@@ -1,10 +1,18 @@
+@if (isAuthenticated) {
+
 <app-header></app-header>
 
 <div class="app-body">
-  <app-sidebar></app-sidebar>
+<app-sidebar></app-sidebar>
 
   <main class="main" [ngClass]="sidebarVisible ? 'collapsed' : 'expanded'">
 
     <router-outlet></router-outlet>
   </main>
+
 </div>
+} @else {
+
+  <app-loggin> </app-loggin>
+
+}

@@ -96,4 +96,35 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+// POST agregar un campo personalizado a una categoría
+router.post('/addField', async (req, res) => {
+  const { name, data_type, category_id, required } = req.body;
+  const userId = req.user?.id || 1; // Temporal: Asume el ID del usuario (aquí es 1 de forma predeterminada)
+
+  try {
+    // Validar que la categoría exista
+    const [categoryResult] = await pool.query('SELECT * FROM categories WHERE id = ? AND status = 1', [category_id]);
+    if (!categoryResult.length) return res.status(404).json({ message: 'Categoría no encontrada o desactivada' });
+
+    // Insertar el nuevo campo
+    const [result] = await pool.query(
+      'INSERT INTO custom_fields (name, data_type, category_id, required, status) VALUES (?, ?, ?, ?, 1)',
+      [name, data_type, category_id, required || 0]
+    );
+
+    await registrarMovimiento({
+      table: 'custom_fields',
+      type: 1, // Tipo 1 para creación
+      objectId: result.insertId,
+      userId,
+      before: null,
+      after: { name, data_type, category_id, required: required || 0, status: 1 }
+    });
+
+    res.status(201).json({ message: 'Campo personalizado creado', id: result.insertId });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 module.exports = router;

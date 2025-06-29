@@ -31,7 +31,7 @@ CREATE TABLE areas (
     id_floor INT UNSIGNED NOT NULL,
     FOREIGN KEY (id_floor) REFERENCES floors(id)
         ON DELETE CASCADE ON UPDATE CASCADE,
-    CHECK (status IN (0,1))
+    CHECK (status IN (0,1));
 ) ENGINE=InnoDB;
 
 CREATE TABLE users (

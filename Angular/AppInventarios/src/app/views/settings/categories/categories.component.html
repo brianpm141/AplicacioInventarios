@@ -22,6 +22,32 @@
       </select>
     </div>
 
+    <!-- Nueva sección para los campos personalizados -->
+    <div *ngIf="customFields.length > 0">
+      <div *ngFor="let field of customFields">
+        <label [for]="field.name">{{ field.name }}</label>
+        <input 
+          *ngIf="field.data_type === 'text'" 
+          [id]="field.name" 
+          [formControlName]="field.name" 
+          placeholder="Ingresa {{ field.name }}" 
+        />
+        <input 
+          *ngIf="field.data_type === 'number'" 
+          [id]="field.name" 
+          [formControlName]="field.name" 
+          placeholder="Ingresa {{ field.name }}" 
+          type="number"
+        />
+        <input 
+          *ngIf="field.data_type === 'ip'" 
+          [id]="field.name" 
+          [formControlName]="field.name" 
+          placeholder="Ingresa {{ field.name }}" 
+        />
+      </div>
+    </div>
+
     <div class="form-buttons">
       <button type="submit" [disabled]="categoryForm.invalid">
         {{ isEditing ? 'Actualizar' : 'Crear' }}
@@ -56,19 +82,19 @@
   </table>
 </div>
 
-<!-- 🟢 Mensaje de éxito -->
+
 <div class="message-box success" *ngIf="successMessage">
   <div class="icon">✔️</div>
   {{ successMessage }}
 </div>
 
-<!-- 🔴 Mensaje de error -->
+
 <div class="message-box error" *ngIf="errorMessage">
   <div class="icon">❌</div>
   {{ errorMessage }}
 </div>
 
-<!-- 🟠 Confirmación de eliminación -->
+
 <div id="confirm-backdrop" *ngIf="confirmId !== null">
   <div id="confirm-modal">
     <div id="confirm-header">
