@@ -25,21 +25,19 @@ export class LogginComponent {
     });
   }
 
-  login() {
-    if (this.loginForm.invalid) return;
+login() {
+  if (this.loginForm.invalid) return;
 
-    const { username, password } = this.loginForm.value;
+  const { username, password } = this.loginForm.value;
 
-    this.authService.login(username, password).subscribe({
-      next: (res) => {
-        // Aquí puedes redirigir según el rol
-        if (res.role === 1) this.router.navigate(['/admin']);
-        else if (res.role === 2) this.router.navigate(['/tecnico']);
-        else this.router.navigate(['/cliente']);
-      },
-      error: (err) => {
-        alert(err.error.message || 'Error al iniciar sesión');
-      }
-    });
-  }
+  this.authService.login(username, password).subscribe({
+    next: (res) => {
+      this.authService.notifyAuthChange(); // notifica que se logueó
+      this.router.navigate(['/homepage']);
+    },
+    error: (err) => {
+      alert(err.error.message || 'Error al iniciar sesión');
+    }
+  });
+} 
 }

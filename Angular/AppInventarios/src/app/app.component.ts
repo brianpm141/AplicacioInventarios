@@ -34,7 +34,9 @@ export class AppComponent {
 
   constructor() {
 
-    this.isAuthenticated = this.authService.isLoggedIn(); 
+    this.authService.authStatus$.subscribe(status => {
+    this.isAuthenticated = status;
+  });
 
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd),
