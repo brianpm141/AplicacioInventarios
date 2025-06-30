@@ -55,6 +55,7 @@
 
       <tr><td><div class="line"></div></td></tr>
 
+    @if (role === 1 || role === 2){
       <tr>
         <td>
           <button class="nav-btn" routerLink="/building" routerLinkActive="active">
@@ -63,7 +64,9 @@
           </button>
         </td>
       </tr>
+    }
 
+    @if (role === 1){
       <tr>
         <td>
           <button class="nav-btn" routerLink="/usuarios" routerLinkActive="active">
@@ -81,6 +84,9 @@
           </button>
         </td>
       </tr>
+    }
+
+
 
       <tr>
         <td>

@@ -17,8 +17,14 @@ import { AuthService} from '../../services/auth/auth.service'
 
 export class SettingsComponent {
   opcion: string = '';
+  role: number | null = null;
 
-  constructor( private authService: AuthService){}
+  constructor( private authService: AuthService){
+    const user = this.authService.getUser();
+    this.role = user?.role ?? null;
+  }
+
+
 
   logout(){
     this.authService.logout();

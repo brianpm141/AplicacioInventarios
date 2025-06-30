@@ -26,20 +26,26 @@
       <span>Departamentos</span>
     </button>
 
+    @if (role === 2 || role === 1){
+      <button class="card" routerLink="/building">
+        <img src="gif/reports.gif" alt="Reportes" />
+        <span>Reportes</span>
+      </button>
+    }
+
+    @if (role === 1){
+
     <button class="card" routerLink="/usuarios">
       <img src="gif/users.gif" alt="Usuarios" />
       <span>Usuarios</span>
-    </button>
-
-    <button class="card" routerLink="/building">
-      <img src="gif/reports.gif" alt="Reportes" />
-      <span>Reportes</span>
     </button>
 
     <button class="card" routerLink="/history">
       <img src="gif/history.gif" alt="Historial" />
       <span>Historial de movimientos</span>
     </button>
+    }
+
   </div>
 </div>
 

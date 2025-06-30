@@ -1,7 +1,9 @@
 <div class="main container">
   <div class="left-container">
     <table>
-      <tr><td>
+      
+      @if (role === 1){
+        <tr><td>
   <button (click)="opcion = 'categorias'" 
           [ngClass]="{ 'active-btn': opcion === 'categorias' || opcion === ''}">Categorías</button>
 </td></tr>
@@ -20,7 +22,7 @@
   <button (click)="opcion = 'respaldos'" 
           [ngClass]="{ 'active-btn': opcion === 'respaldos' }">Configurar Respaldos automáticos</button>
 </td></tr>
-
+      }
 <tr><td>
   <button (click)="logout()" 
           [ngClass]="{ 'active-btn': opcion === 'cerrar' }">Cerrar Sesión</button>
@@ -34,7 +36,10 @@
     <app-importdb *ngSwitchCase="'importar'"></app-importdb>
     <app-exportdb *ngSwitchCase="'exportar'"></app-exportdb>
     <app-progresp *ngSwitchCase="'respaldos'"></app-progresp>
-    <app-categories *ngSwitchCase="''"></app-categories>
+    @if (role === 1) {
+      <app-categories *ngSwitchCase="''"></app-categories>
+    }
+    
 
   </div>
 </div>
